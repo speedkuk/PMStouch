@@ -11,7 +11,9 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: ['Main'],
+    views: ['Main', 'ResourceList'],
+	stores : ['RasViewResourceListOut'],
+	models : ['RasViewResourceListOut.resList'],
 
     icon: {
         57: 'resources/icons/Icon.png',
