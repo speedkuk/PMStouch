@@ -26,12 +26,26 @@ Ext.define("PMStouch.view.Main", {
                 ].join("")
             },
             {
-                
-                    title: 'Welcome',
-                        xtype : 'reslist'
-                    
-                
-            }
+                title: 'Resource',
+				iconCls: 'home',
+                xtype : 'reslist'
+            },
+			{
+				title: 'Resource History',
+				iconCls: 'home',
+                xtype : 'reshistory'
+			},
+			{
+				title: 'Event',
+				iconCls: 'home',
+                xtype : 'eventlist'
+			},
+			{
+				title: 'Project Code',
+				iconCls: 'home',
+                xtype : 'projectcode'
+			}
+			
         ]
     }
 });

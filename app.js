@@ -11,9 +11,9 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: ['Main', 'ResourceList'],
-	stores : ['RasViewResourceListOut'],
-	models : ['RasViewResourceListOut.resList'],
+    views: ['Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCode'],
+	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataOut'],
+	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataOut'],
 
     icon: {
         57: 'resources/icons/Icon.png',
