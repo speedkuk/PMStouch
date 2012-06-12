@@ -12,8 +12,8 @@ Ext.application({
     ],
 
     views: ['Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCode'],
-	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataOut'],
-	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataOut'],
+	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataListOut'],
+	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataListOut.dataList'],
 
     icon: {
         57: 'resources/icons/Icon.png',

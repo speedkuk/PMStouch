@@ -1,27 +1,36 @@
-Ext.define('PMStouch.model.BasViewDataOut', {
+Ext.define('PMStouch.model.BasViewDataListOut.dataList', {
 	extend : 'Ext.data.Model',
 	config : {
 		fields : [ {
-				name : 'statusvalue',
+				name : 'key1',
 				type : 'string'
 			}, {
-				name : 'msgcate',
+				name : 'key2',
 				type : 'string'
 			}, {
-				name : 'msgcode',
+				name : 'key3',
 				type : 'string'
 			}, {
-				name : 'msg',
+				name : 'key4',
 				type : 'string'
 			}, {
-				name : 'fieldmsg',
-				type : 'auto'
+				name : 'key5',
+				type : 'string'
 			}, {
-				name : 'total',
-				type : 'number'
+				name : 'key6',
+				type : 'string'
 			}, {
-				name : 'fileinfo',
-				type : 'auto'
+				name : 'key7',
+				type : 'string'
+			}, {
+				name : 'key8',
+				type : 'string'
+			}, {
+				name : 'key9',
+				type : 'string'
+			}, {
+				name : 'key10',
+				type : 'string'
 			}, {
 				name : 'data1',
 				type : 'string'
