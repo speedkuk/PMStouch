@@ -1,4 +1,4 @@
-Ext.define('PMStouch.view.ProjectCode', {
+Ext.define('PMStouch.view.ProjectCodeList', {
 	extend : 'Ext.List',
 	xtype : 'projectcode',
 	config : {

@@ -11,7 +11,8 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    views: ['Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCode'],
+	controllers: ['Event', 'ResourceList', 'Setup', 'ProjectCodeList', 'EventMore', 'EventList'],
+    views: ['Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Login', 'Event', 'EventMore', 'Setup'],
 	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataListOut'],
 	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataListOut.dataList'],
 
