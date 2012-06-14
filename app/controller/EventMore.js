@@ -4,6 +4,7 @@ Ext.define('PMStouch.controller.EventMore', {
 	    config: {
 			
 			refs: {
+				event: 'event',
 	            eventMore: 'eventmore',
 				eventField: 'eventmore [itemId=event]',
 				sendButton: 'eventmore button[itemId=send]',

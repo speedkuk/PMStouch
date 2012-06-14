@@ -18,14 +18,14 @@ Ext.define('PMStouch.controller.Event', {
 					initialize : 'onInitialize'
 				},
 	            userField: {
-	                focus: 'onSelectUser',
-					change: 'onChangeUser'
+	                focus: 'onUserSelected',
+					change: 'onUserChanged'
 	            },
 				projectField: {
-	                focus: 'onSelectProject'
+	                focus: 'onProjectSelected'
 	            },
 				moreButton: {
-	                tap: 'onEventMore'
+	                tap: 'onButtonEventMore'
 	            }
 	        }
 	    },
@@ -58,7 +58,7 @@ Ext.define('PMStouch.controller.Event', {
 			}
 		},
 
-	    onSelectUser: function(field) {
+	    onUserSelected: function(field) {
 	        this.getEvent().push({
 				xtype: 'reslist',
 				target: field,
@@ -66,7 +66,7 @@ Ext.define('PMStouch.controller.Event', {
 			});
 	    },
 	
-		onChangeUser: function(field, value) {
+		onUserChanged: function(field, value) {
 			var self = this;
 			var store = Ext.getStore('RasViewResourceOut');
 			store.load({
@@ -82,7 +82,7 @@ Ext.define('PMStouch.controller.Event', {
 			});
 	    },
 	
-		onSelectProject: function(field) {
+		onProjectSelected: function(field) {
 	        this.getEvent().push({
 				xtype: 'projectcode',
 				target: field,
@@ -95,7 +95,7 @@ Ext.define('PMStouch.controller.Event', {
 			PMStouch.setting.set('LastProject', value);
 		},
 		
-		onEventMore: function(field) {
+		onButtonEventMore: function(field) {
 			if(this.getUserField().getValue() && this.getProjectField().getValue()) {
 		        this.getEvent().push({
 					xtype: 'eventmore'
