@@ -4,91 +4,37 @@ Ext.define('PMStouch.controller.EventMore', {
 	    config: {
 			
 			refs: {
-				event: 'event',
 	            eventMore: 'eventmore',
-				lastTime: 'eventmore [itemId=lastTime]',
-				lastEvent: 'eventmore [itemId=lastEvent]',
-				lastProjectCode: 'eventmore [itemId=lastProjCode]',
-				userField: 'eventmore [itemId=user]',
-				projectField: 'eventmore [itemId=project]',
 				eventField: 'eventmore [itemId=event]',
-				parentProjectField: 'event > #eventForm [itemId=project]',
+				sendButton: 'eventmore button[itemId=send]',
+				resetButton: 'eventmore button[itemId=reset]'
 	        },
 		
 	        control: {
 				eventMore : {
 					initialize : 'onInitialize'
 				},
-	            userField: {
-	                focus: 'selectUser',
-					change: 'changeUser'
-	            },
-				projectField: {
-	                focus: 'selectProject',
-					change: 'changeProject'
-	            },
 				eventField : {
-	                focus: 'selectEvent',
-					change: 'changeEvent'
-	            }
+	                focus: 'onEventSelected',
+					change: 'onEventChanged'
+	            },
+				sendButton: {
+					tap : 'onSendButton'
+				},
+				resetButton: {
+					tap : 'onResetButton'
+				}
 	        }
 	    },
 
 		onInitialize : function() {
-			var lastuser = PMStouch.setting.get('LastUser');
-			var lastproj = PMStouch.setting.get('LastProject');
 			var lastevent = PMStouch.setting.get('LastEvent');
 
-			if(lastuser) {
-				this.getUserField().setValue(lastuser.resId);
-		        this.getLastTime().setValue(lastuser.lastEventTime);
-		        this.getLastEvent().setValue(lastuser.lastEventId);
-		        // this.lastProjectCode().setValue(lastuser.xx);
-				
-				if(lastproj)
-					this.getProjectField().setValue(lastproj);
-				if(lastevent)
-					this.getEventField().setValue(lastevent);
-			}
+			if(lastevent)
+				this.getEventField().setValue(lastevent);
 		},
 		
-	    selectUser: function(field) {
-	        this.getEvent().push({
-				xtype: 'reslist',
-				target: field,
-				navigationView: this.getEvent()
-			});
-	    },
-	
-		changeUser: function(field, value) {
-			var self = this;
-			var store = Ext.getStore('RasViewResourceOut');
-			store.load({
-				callback : function(records) {
-					var rc = records[0].data;
-
-					PMStouch.setting.set('LastUser', rc);
-
-			        self.getLastTime().setValue(rc.lastEventTime);
-			        self.getLastEvent().setValue(rc.lastEventId);
-			        // self.lastProjectCode().setValue(rc.xx);
-				}
-			});
-	    },
-	
-		selectProject: function(field) {
-	        this.getEvent().push({
-				xtype: 'projectcode',
-				target: field,
-				navigationView: this.getEvent()
-			});
-	    },
-	
-		changeProject: function(field, value) {
-			PMStouch.setting.set('LastProject', value);
-		},
-	
-		selectEvent: function(field) {
+		onEventSelected: function(field) {
 	        this.getEvent().push({
 				xtype: 'eventlist',
 				target: field,
@@ -96,7 +42,15 @@ Ext.define('PMStouch.controller.EventMore', {
 			});
 	    },
 	
-		changeEvent: function(field, value) {
+		onEventChanged: function(field, value) {
 			PMStouch.setting.set('LastEvent', value);
+		},
+		
+		onSendButton: function() {
+			Ext.Msg.alert('확인', '요청하신 내용이 잘 처리되었습니다.');
+		},
+		
+		onResetButton: function() {
+			this.getEventMore().reset();
 		}
 });

@@ -4,49 +4,18 @@ Ext.define("PMStouch.view.EventMore", {
     xtype: 'eventmore',
     config: {
 
-        title: 'Event More',
+        title: '상세모드',
         items: [
         {
             xtype: 'textfield',
-            itemId: 'user',
-            label: 'User'
-        },
-        {
-            xtype: 'fieldset',
-            title: 'Recent Info.',
-            items: [
-                {
-                    xtype: 'textfield',
-                    label: 'T. Time',
-					itemId: 'lastTime'
-                },
-                {
-                    xtype: 'textfield',
-                    label: 'Event',
-					itemId: 'lastEvent'
-                },
-                {
-                    xtype: 'textfield',
-                    label: 'P. Code',
-					itemId: 'lastProjCode'
-                }
-            ]
-        },
-        {
-            xtype: 'textfield',
-            itemId: 'project',
-            label: 'Project Code'
-        },
-        {
-            xtype: 'textfield',
             itemId: 'event',
-            label: 'Event'
+            label: '이벤트 종류'
         },
         {
             xtype: 'selectfield',
             itemId: 'manday',
             value: 1,
-            label: 'Man Day',
+            label: 'Man/Day',
             options: [
             {
                 text: '0.1',
@@ -93,23 +62,29 @@ Ext.define("PMStouch.view.EventMore", {
         {
             xtype: 'datepickerfield',
             itemId: 'time',
-            label: 'Time'
+            label: '발생 시간'
         },
         {
             xtype: 'container',
+			docked : 'bottom',
             layout: {
                 type: 'hbox'
             },
             items: [
-            {
-                xtype: 'button',
-                width: '',
-                text: 'OK',
-                flex: 1
-            }
+                {
+                    xtype: 'button',
+					itemId : 'send',
+                    text: '전송',
+                    flex: 1
+                },
+                {
+                    xtype: 'button',
+					itemId: 'reset',
+                    text: '화면 초기화',
+                    flex: 1
+                }
             ]
-        }
-        ]
+        }]
 
     }
 });

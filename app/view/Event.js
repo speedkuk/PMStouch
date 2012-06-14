@@ -7,30 +7,30 @@ Ext.define("PMStouch.view.Event", {
             {
                 xtype: 'formpanel',
 				itemId : 'eventForm',
-				title: 'Event',
+				title: '간편모드',
                 items: [
                     {
                         xtype: 'textfield',
 						itemId: 'user',
-                        label: 'User'
+                        label: '직원아이디'
                     },
                     {
                         xtype: 'fieldset',
-                        title: 'Recent Info.',
+                        title: '마지막 이벤트 입력 정보',
                         items: [
                             {
                                 xtype: 'textfield',
-                                label: 'T. Time',
+                                label: '이벤트 시간',
 								itemId: 'lastTime'
                             },
                             {
                                 xtype: 'textfield',
-                                label: 'Event',
+                                label: '이벤트 종류',
 								itemId: 'lastEvent'
                             },
                             {
                                 xtype: 'textfield',
-                                label: 'P. Code',
+                                label: '프로젝트 코드',
 								itemId: 'lastProjCode'
                             }
                         ]
@@ -38,10 +38,11 @@ Ext.define("PMStouch.view.Event", {
 					{
 	                        xtype: 'textfield',
 							itemId: 'project',
-	                        label: 'Project Code'
+	                        label: '대상 프로젝트'
 	                },
                     {
                         xtype: 'container',
+						docked : 'bottom',
                         layout: {
                             type: 'hbox'
                         },
@@ -49,18 +50,18 @@ Ext.define("PMStouch.view.Event", {
                             {
                                 xtype: 'button',
                                 width: '',
-                                text: 'Start',
+                                text: '출근',
                                 flex: 1
                             },
                             {
                                 xtype: 'button',
-                                text: 'End',
+                                text: '퇴근',
                                 flex: 1
                             },
                             {
                                 xtype: 'button',
 								itemId: 'more',
-                                text: 'More',
+                                text: '상세모드로..',
                                 flex: 1
                             }
                         ]

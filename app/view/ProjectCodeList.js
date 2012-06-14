@@ -3,6 +3,7 @@ Ext.define('PMStouch.view.ProjectCodeList', {
 	xtype : 'projectcode',
 	config : {
 	    itemTpl: '{key1} - {data1}',
+		title : '프로젝트 코드 선택',
 	    store : 'BasViewDataListOut'
 	}
 });

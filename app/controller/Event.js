@@ -18,14 +18,14 @@ Ext.define('PMStouch.controller.Event', {
 					initialize : 'onInitialize'
 				},
 	            userField: {
-	                focus: 'selectUser',
-					change: 'changeUser'
+	                focus: 'onSelectUser',
+					change: 'onChangeUser'
 	            },
 				projectField: {
-	                focus: 'selectProject'
+	                focus: 'onSelectProject'
 	            },
 				moreButton: {
-	                tap: 'eventMore'
+	                tap: 'onEventMore'
 	            }
 	        }
 	    },
@@ -47,9 +47,18 @@ Ext.define('PMStouch.controller.Event', {
 			if(username) {
 				this.getUserField().setValue(username);
 			}
+
+			var defaultproj = PMStouch.setting.get('DefaultProject');
+			if(defaultproj) {
+				this.getProjectField().setValue(defaultproj);
+			} else {
+				var lastproject = PMStouch.setting.get('LastProject');
+				if(lastproject)
+					this.getProjectField().setValue(lastproject);
+			}
 		},
 
-	    selectUser: function(field) {
+	    onSelectUser: function(field) {
 	        this.getEvent().push({
 				xtype: 'reslist',
 				target: field,
@@ -57,7 +66,7 @@ Ext.define('PMStouch.controller.Event', {
 			});
 	    },
 	
-		changeUser: function(field, value) {
+		onChangeUser: function(field, value) {
 			var self = this;
 			var store = Ext.getStore('RasViewResourceOut');
 			store.load({
@@ -68,12 +77,12 @@ Ext.define('PMStouch.controller.Event', {
 
 			        self.getLastTime().setValue(rc.lastEventTime);
 			        self.getLastEvent().setValue(rc.lastEventId);
-			        // self.lastProjectCode().setValue(rc.xx);
+			        self.getLastProjectCode().setValue(rc.resSts1);
 				}
 			});
 	    },
 	
-		selectProject: function(field) {
+		onSelectProject: function(field) {
 	        this.getEvent().push({
 				xtype: 'projectcode',
 				target: field,
@@ -82,14 +91,20 @@ Ext.define('PMStouch.controller.Event', {
 	    },
 	
 		changeProject: function(field, value) {
+			console.log(value);
 			PMStouch.setting.set('LastProject', value);
-			
-			this.getProjectField().setValue(value);
 		},
 		
-		eventMore: function(field) {
-	        this.getEvent().push({
-				xtype: 'eventmore'
-			});
+		onEventMore: function(field) {
+			if(this.getUserField().getValue() && this.getProjectField().getValue()) {
+		        this.getEvent().push({
+					xtype: 'eventmore'
+				});
+			} else {
+		        Ext.Msg.alert(
+		            "필수입력",
+		            "상세모드로 이동하기 전에 직원코드와 프로젝트코드를 입력해주세요."
+		        );
+			}
 	    }
 });

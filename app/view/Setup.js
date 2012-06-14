@@ -6,20 +6,23 @@ Ext.define("PMStouch.view.Setup", {
 		items:[
             {
                 xtype: 'formpanel',
-				title: 'Setup',
-                items: [
+				title: '기본정보',
+                items: [{
+                    xtype: 'fieldset',
+                    title: '기본 정보 설정',
+					items: [
                     {
                         xtype: 'textfield',
 						itemId: 'user',
-                        label: 'User'
+                        label: '직원 아이디'
                     },
                     {
                         xtype: 'textfield',
 						itemId: 'project',
-                        label: 'Project'
+                        label: '프로젝트 코드'
                     }
-
-                ]
+					]
+				}]
             }
         ]
 	}

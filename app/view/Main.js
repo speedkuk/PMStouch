@@ -5,17 +5,17 @@ Ext.define("PMStouch.view.Main", {
 		items: [
 		            {
 		                xtype: 'event',   
-		                title: 'Event',
+		                title: '이벤트 입력',
 		                iconCls: 'info'
 		            },
 		            {
 		                xtype: 'reshistory',
-		                title: 'History',
+		                title: '이력',
 		                iconCls: 'info'
 		            },
 		            {
 		                xtype: 'setup',
-		                title: 'Setup',
+		                title: '설정',
 		                iconCls: 'info'
 		            }
 		        ],
