@@ -31,27 +31,21 @@ Ext.define('PMStouch.controller.Event', {
 	    },
 	
 		onInitialize: function() {
+			var self = this;
 			var defaultuser = PMStouch.setting.get('DefaultUser');
+			var username;
 			
 			if(defaultuser) {
-				// TODO store load here. 
-				var store = Ext.getStore('RasViewResourceOut');
-				var rc = store.first().data;
-				
-				this.getUserField().setValue(rc.resId);
-				
-				PMStouch.setting.set('LastUser', rc);
-				// PMStouch.setting.set('LastProject', rc.lastProject);
+				username = defaultuser;
 			} else {
 				var lastuser = PMStouch.setting.get('LastUser');
-
 				if(lastuser) {
-					this.getUserField().setValue(lastuser.resId);
-
-					var lastproject = PMStouch.setting.get('LastProject');
-					if(lastproject)
-						this.getProjectField().setValue(lastproject);
+					username = lastuser.resId;
 				}
+			}
+			
+			if(username) {
+				this.getUserField().setValue(username);
 			}
 		},
 
