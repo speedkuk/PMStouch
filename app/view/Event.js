@@ -21,17 +21,20 @@ Ext.define("PMStouch.view.Event", {
                             {
                                 xtype: 'textfield',
                                 label: '이벤트 시간',
-								itemId: 'lastTime'
+								itemId: 'lastTime',
+								disabled: true
                             },
                             {
                                 xtype: 'textfield',
                                 label: '이벤트 종류',
-								itemId: 'lastEvent'
+								itemId: 'lastEvent',
+								disabled: true
                             },
                             {
                                 xtype: 'textfield',
                                 label: '프로젝트 코드',
-								itemId: 'lastProjCode'
+								itemId: 'lastProjCode',
+								disabled: true
                             }
                         ]
                     },
