@@ -38,14 +38,18 @@ Ext.define('PMStouch.controller.EventMore', {
 			var lastuser = PMStouch.setting.get('LastUser');
 			var lastproj = PMStouch.setting.get('LastProject');
 			var lastevent = PMStouch.setting.get('LastEvent');
-			
-			this.getUserField().setValue(lastuser.resId);
-	        this.getLastTime().setValue(lastuser.lastEventTime);
-	        this.getLastEvent().setValue(lastuser.lastEventId);
-	        // this.lastProjectCode().setValue(lastuser.xx);
 
-			this.getProjectField().setValue(lastproj);
-			this.getEventField().setValue(lastevent);
+			if(lastuser) {
+				this.getUserField().setValue(lastuser.resId);
+		        this.getLastTime().setValue(lastuser.lastEventTime);
+		        this.getLastEvent().setValue(lastuser.lastEventId);
+		        // this.lastProjectCode().setValue(lastuser.xx);
+				
+				if(lastproj)
+					this.getProjectField().setValue(lastproj);
+				if(lastevent)
+					this.getEventField().setValue(lastevent);
+			}
 		},
 		
 	    selectUser: function(field) {
@@ -57,7 +61,6 @@ Ext.define('PMStouch.controller.EventMore', {
 	    },
 	
 		changeUser: function(field, value) {
-			console.log(value);
 			var self = this;
 			var store = Ext.getStore('RasViewResourceOut');
 			store.load({
