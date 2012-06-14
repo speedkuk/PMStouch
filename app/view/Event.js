@@ -7,7 +7,7 @@ Ext.define("PMStouch.view.Event", {
             {
                 xtype: 'formpanel',
 				itemId : 'eventForm',
-				title: '간편모드',
+				title: '기본 입력',
                 items: [
                     {
                         xtype: 'textfield',
@@ -65,7 +65,7 @@ Ext.define("PMStouch.view.Event", {
                             {
                                 xtype: 'button',
 								itemId: 'more',
-                                text: '상세모드로..',
+                                text: '추가정보입력..',
                                 flex: 1
                             }
                         ]

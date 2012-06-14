@@ -4,7 +4,7 @@ Ext.define("PMStouch.view.EventMore", {
     xtype: 'eventmore',
     config: {
 
-        title: '상세모드',
+        title: '추가정보 입력',
         items: [
         {
             xtype: 'textfield',
