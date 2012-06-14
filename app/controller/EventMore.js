@@ -48,7 +48,7 @@ Ext.define('PMStouch.controller.EventMore', {
 		},
 		
 		onSendButton: function() {
-			Ext.Msg.alert('확인', '요청하신 내용이 잘 처리되었습니다.');
+			Ext.Msg.alert(this.getEventField().getValue(), '요청하신 내용이 잘 처리되었습니다.');
 		},
 		
 		onResetButton: function() {

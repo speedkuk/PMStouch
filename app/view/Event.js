@@ -49,12 +49,13 @@ Ext.define("PMStouch.view.Event", {
                         items: [
                             {
                                 xtype: 'button',
-                                width: '',
+								itemId: 'start',
                                 text: '출근',
                                 flex: 1
                             },
                             {
                                 xtype: 'button',
+								itemId: 'end',
                                 text: '퇴근',
                                 flex: 1
                             },

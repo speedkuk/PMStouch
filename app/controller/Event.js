@@ -10,7 +10,9 @@ Ext.define('PMStouch.controller.Event', {
 				lastProjectCode: 'event > #eventForm [itemId=lastProjCode]',
 				userField: 'event > #eventForm [itemId=user]',
 				projectField: 'event > #eventForm [itemId=project]',
-				moreButton: 'event > #eventForm [itemId=more]'
+				moreButton: 'event > #eventForm [itemId=more]',
+				startButton: 'event > #eventForm [itemId=start]',
+				endButton: 'event > #eventForm [itemId=end]'
 	        },
 		
 	        control: {
@@ -26,6 +28,12 @@ Ext.define('PMStouch.controller.Event', {
 	            },
 				moreButton: {
 	                tap: 'onButtonEventMore'
+	            },
+				startButton: {
+	                tap: 'onButtonStart'
+	            },
+				endButton: {
+	                tap: 'onButtonEnd'
 	            }
 	        }
 	    },
@@ -106,5 +114,14 @@ Ext.define('PMStouch.controller.Event', {
 		            "상세모드로 이동하기 전에 직원코드와 프로젝트코드를 입력해주세요."
 		        );
 			}
+	    },
+	
+		onButtonStart: function(field) {
+			Ext.Msg.alert('출근', '요청하신 내용이 잘 처리되었습니다.');
+	    },
+	
+		onButtonEnd: function(field) {
+			Ext.Msg.alert('퇴근', '요청하신 내용이 잘 처리되었습니다.');
 	    }
+	
 });
