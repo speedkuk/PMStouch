@@ -1,8 +1,17 @@
 //<debug>
 Ext.Loader.setPath({
-    'Ext': 'sdk/src'
+    'Ext': 'sdk/src',
+	'PMStouch': 'app',
+	'PMStouch.mixin': 'app/mixin'
 });
 //</debug>
+
+Ext.define('PMStouch', {
+	singleton : true,
+	mixins : {
+		setting : 'PMStouch.mixin.Setting'
+	}
+});
 
 Ext.application({
     name: 'PMStouch',

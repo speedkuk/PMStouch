@@ -19,7 +19,7 @@
      */
     "js": [
         {
-            "path": "sdk/sencha-touch.js"
+            "path": "sdk/sencha-touch-all.js"
         },
         {
             "path": "app.js"

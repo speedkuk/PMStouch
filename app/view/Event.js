@@ -6,6 +6,7 @@ Ext.define("PMStouch.view.Event", {
 		items:[
             {
                 xtype: 'formpanel',
+				itemId : 'eventForm',
 				title: 'Event',
                 items: [
                     {
@@ -30,7 +31,7 @@ Ext.define("PMStouch.view.Event", {
                             {
                                 xtype: 'textfield',
                                 label: 'P. Code',
-								itemId: 'lastTranCode'
+								itemId: 'lastProjCode'
                             }
                         ]
                     },

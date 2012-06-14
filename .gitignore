@@ -2,3 +2,4 @@ sdk
 build
 archive
 .senchasdk
+.DS_Store

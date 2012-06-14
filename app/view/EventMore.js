@@ -8,30 +8,33 @@ Ext.define("PMStouch.view.EventMore", {
         items: [
         {
             xtype: 'textfield',
-            itemId: 'moreUser',
+            itemId: 'user',
             label: 'User'
         },
         {
             xtype: 'fieldset',
             title: 'Recent Info.',
             items: [
-            {
-                xtype: 'textfield',
-                label: 'T. Time'
-            },
-            {
-                xtype: 'textfield',
-                label: 'Event'
-            },
-            {
-                xtype: 'textfield',
-                label: 'P. Code'
-            }
+                {
+                    xtype: 'textfield',
+                    label: 'T. Time',
+					itemId: 'lastTime'
+                },
+                {
+                    xtype: 'textfield',
+                    label: 'Event',
+					itemId: 'lastEvent'
+                },
+                {
+                    xtype: 'textfield',
+                    label: 'P. Code',
+					itemId: 'lastProjCode'
+                }
             ]
         },
         {
             xtype: 'textfield',
-            itemId: 'moreProject',
+            itemId: 'project',
             label: 'Project Code'
         },
         {
