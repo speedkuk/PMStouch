@@ -19,7 +19,7 @@ Ext.define("PMStouch.view.Setup", {
                     {
                         xtype: 'textfield',
 						itemId: 'project',
-                        label: '프로젝트 코드'
+                        label: '프로젝트'
                     }
 					]
 				}]
