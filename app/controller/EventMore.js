@@ -48,7 +48,21 @@ Ext.define('PMStouch.controller.EventMore', {
 		},
 		
 		onSendButton: function() {
-			Ext.Msg.alert(this.getEventField().getValue(), '요청하신 내용이 잘 처리되었습니다.');
+			
+			this.getEventField().setValue('WRK_END');
+			
+			this.getForm().submit({
+				url: 'service/rasResourceEvent.json',
+				method: 'POST',
+				success: function() {
+					Ext.Msg.alert(this.getEventField().getValue(), '요청하신 내용이 잘 처리되었습니다.');
+				},
+				failure: function() {
+					Ext.Msg.alert(this.getEventField().getValue(), '요청하신 내용이 실패하였습니다.');
+				}
+			});
+			
+			
 		},
 		
 		onResetButton: function() {

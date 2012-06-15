@@ -5,11 +5,13 @@ Ext.define('PMStouch.controller.Event', {
 			
 			refs: {
 	            event: 'event',
+				form: 'event > #eventForm',
 				lastTime: 'event > #eventForm [itemId=lastTime]',
 				lastEvent: 'event > #eventForm [itemId=lastEvent]',
 				lastProjectCode: 'event > #eventForm [itemId=lastProjCode]',
 				userField: 'event > #eventForm [itemId=user]',
 				projectField: 'event > #eventForm [itemId=project]',
+				eventField: 'event > #eventForm [itemId=event]',
 				moreButton: 'event > #eventForm [itemId=more]',
 				startButton: 'event > #eventForm [itemId=start]',
 				endButton: 'event > #eventForm [itemId=end]'
@@ -78,6 +80,10 @@ Ext.define('PMStouch.controller.Event', {
 			var self = this;
 			var store = Ext.getStore('RasViewResourceOut');
 			store.load({
+				params : {
+					procstep : '1',
+					resId : value
+				},
 				callback : function(records) {
 					var rc = records[0].data;
 
@@ -116,11 +122,38 @@ Ext.define('PMStouch.controller.Event', {
 	    },
 	
 		onButtonStart: function(field) {
-			Ext.Msg.alert('출근', '요청하신 내용이 잘 처리되었습니다.');
+			
+			this.getEventField().setValue('WRK_START');
+			
+			this.getForm().submit({
+				url: 'service/rasResourceEvent.json',
+				method: 'POST',
+				success: function() {
+					Ext.Msg.alert('출근', '요청하신 내용이 잘 처리되었습니다.');
+				},
+				failure: function() {
+					Ext.Msg.alert('출근', '요청하신 내용이 실패하였습니다.');
+				}
+			});
+			
+			
 	    },
 	
 		onButtonEnd: function(field) {
-			Ext.Msg.alert('퇴근', '요청하신 내용이 잘 처리되었습니다.');
+			
+			this.getEventField().setValue('WRK_END');
+			
+			this.getForm().submit({
+				url: 'service/rasResourceEvent.json',
+				method: 'POST',
+				success: function() {
+					Ext.Msg.alert('퇴근', '요청하신 내용이 잘 처리되었습니다.');
+				},
+				failure: function() {
+					Ext.Msg.alert('퇴근', '요청하신 내용이 실패하였습니다.');
+				}
+			});
+			
 	    }
 	
 });

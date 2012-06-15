@@ -14,12 +14,24 @@ Ext.define("PMStouch.view.Event", {
 	            {
 	                xtype: 'textfield',
 	                itemId: 'user',
-	                label: '직원아이디'
+	                label: '직원아이디',
+					name: 'resId'
 	            },
 	            {
 	                xtype: 'textfield',
 	                itemId: 'project',
-	                label: '프로젝트'
+	                label: '프로젝트',
+					name: 'chgSts1'
+	            },
+				{
+	                xtype: 'hiddenfield',
+					itemId: 'event',
+					name: 'eventId'
+	            },
+				{
+	                xtype: 'hiddenfield',
+					name: 'procstep',
+					value: 1
 	            }
 	            ]
 	        },

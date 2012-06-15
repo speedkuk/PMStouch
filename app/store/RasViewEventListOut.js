@@ -15,6 +15,9 @@ Ext.define('PMStouch.store.RasViewEventListOut', {
 			reader : {
 				type : 'json',
 				rootProperty : 'eventList'
+			},
+			extraParams : {
+				procstep : '1'
 			}
 		}
 	}

@@ -18,7 +18,7 @@ Ext.define('PMStouch.store.BasViewDataListOut', {
 			},
 			extraParams : {
 				procstep : '1',
-				tableName : 'ORDER_STATUS'
+				tableName : '_PROJECT'
 			}
 		}
 	}

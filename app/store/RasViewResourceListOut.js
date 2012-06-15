@@ -15,6 +15,9 @@ Ext.define('PMStouch.store.RasViewResourceListOut', {
 			reader : {
 				type : 'json',
 				rootProperty : 'resList'
+			},
+			extraParams : {
+				procstep : '1'
 			}
 		}
 	}
