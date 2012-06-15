@@ -5,18 +5,15 @@ Ext.define("PMStouch.view.Main", {
 		items: [
 		            {
 		                xtype: 'event',   
-		                title: '이벤트 입력',
-		                iconCls: 'info'
+		                iconCls: 'compose2'
 		            },
 		            {
 		                xtype: 'reshistory',
-		                title: '이력',
-		                iconCls: 'info'
+		                iconCls: 'list'
 		            },
 		            {
 		                xtype: 'setup',
-		                title: '설정',
-		                iconCls: 'info'
+		                iconCls: 'settings'
 		            }
 		        ],
 		        tabBar: {

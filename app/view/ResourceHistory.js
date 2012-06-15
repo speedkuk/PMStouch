@@ -3,7 +3,6 @@ Ext.define('PMStouch.view.ResourceHistory', {
 	xtype : 'reshistory',
 	config : {
 	    itemTpl: '{lastEventId} : {lastEventTime} : {resSts1}',
-		title : '이벤트 이력',
 	    store : 'RasViewResourceOut'
 	}
 });

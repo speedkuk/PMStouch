@@ -1,3 +1,9 @@
+$base-color: #2968b7 !default;
+$global-row-height: 2em !default;
+$form-field-height: 2em !default;
+$form-spacing: .3em !default;
+$tabs-bottom-radius: 0em !default;
+
 @import 'sencha-touch/default/all';
 
 // You may remove any of the following modules that you
@@ -16,4 +22,17 @@
 @include sencha-form;
 @include sencha-msgbox;
 
-// Your custom code goes here...
+// pictos icon style
+@include pictos-iconmask('compose2');
+@include pictos-iconmask('list');
+@include pictos-iconmask('settings');
+
+// form icon style
+.x-input-el{padding:.2em;}
+.x-tabbar.x-docked-bottom{height:2.3em;}
+.x-tab {min-width:2.5em;padding-top:.3em;}
+.x-tabbar.x-docked-bottom .x-tab{min-width:2.6em;margin:0 5px;padding-top:0.25em;}
+.x-tabbar-dark.x-docked-bottom .x-tab-active .x-button-icon{background-image:-webkit-linear-gradient(top, #EEE,#EEE 3%,#EEE);}
+.x-form .x-scroll-container > .x-inner{padding:0.7em;}
+body.x-desktop{font-size:100%;}
+.x-form-fieldset{margin: 0 0 .5em;}
