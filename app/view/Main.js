@@ -5,7 +5,7 @@ Ext.define("PMStouch.view.Main", {
 		items: [
 		            {
 		                xtype: 'event',   
-		                iconCls: 'compose2'
+		                iconCls: 'compose'
 		            },
 		            {
 		                xtype: 'reshistory',
@@ -13,7 +13,7 @@ Ext.define("PMStouch.view.Main", {
 		            },
 		            {
 		                xtype: 'setup',
-		                iconCls: 'settings'
+		                iconCls: 'settings6'
 		            }
 		        ],
 		        tabBar: {

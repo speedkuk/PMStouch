@@ -1,4 +1,4 @@
-$base-color: #2968b7 !default;
+$base-color: #456fa4 !default;
 $global-row-height: 2em !default;
 $form-field-height: 2em !default;
 $form-spacing: .3em !default;
@@ -23,11 +23,14 @@ $tabs-bottom-radius: 0em !default;
 @include sencha-msgbox;
 
 // pictos icon style
-@include pictos-iconmask('compose2');
+@include pictos-iconmask('compose');
 @include pictos-iconmask('list');
-@include pictos-iconmask('settings');
+@include pictos-iconmask('settings6');
 
-// form icon style
+//common style
+.marginRL5{margin:0 5px;}
+
+// form style
 .x-input-el{padding:.2em;}
 .x-tabbar.x-docked-bottom{height:2.3em;}
 .x-tab {min-width:2.5em;padding-top:.3em;}
@@ -36,3 +39,19 @@ $tabs-bottom-radius: 0em !default;
 .x-form .x-scroll-container > .x-inner{padding:0.7em;}
 body.x-desktop{font-size:100%;}
 .x-form-fieldset{margin: 0 0 .5em;}
+
+// history style
+.lastEventId{font-size:18px;font-weight:bold;color:#003366;}
+.lastEventInfo{font-size:14px;color:#585858;}
+.lastEventInfo span{display:block;font-size:15px;color:#37a600;}
+.x-list .x-list-item .x-list-item-label{padding:0.3em 0.8em;}
+
+//docked bottom style
+.evenButtons{background-image:-webkit-linear-gradient(top, #465f7a,#2d405a 3%,#2d405a);border-top:2px solid #23344c;padding:3px 7px;}
+.evenButtons .x-button{
+	background:url('../image/bgEventButton.png') no-repeat;border:1px solid #222;padding:.8em 0em .8em 2em;
+	box-shadow:1px 1px 1px #23344c;
+	color:#efefef;font-size:19px;
+}
+.evenButtons .x-button.eventEnd{background-position:0 -55px;}
+.evenButtons .x-button.eventMore{background-position:0 -110px;}

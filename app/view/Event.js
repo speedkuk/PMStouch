@@ -53,6 +53,7 @@ Ext.define("PMStouch.view.Event", {
 	            layout: {
 	                type: 'hbox'
 	            },
+				cls : 'evenButtons',
 	            items: [
 	            {
 	                xtype: 'button',
@@ -64,12 +65,14 @@ Ext.define("PMStouch.view.Event", {
 	                xtype: 'button',
 	                itemId: 'end',
 	                text: '퇴근',
+					cls : 'marginRL5 eventEnd',
 	                flex: 1
 	            },
 	            {
 	                xtype: 'button',
 	                itemId: 'more',
-	                text: '추가정보',
+	                text: '변경',
+					cls : 'eventMore',
 	                flex: 1
 	            }
 	            ]
