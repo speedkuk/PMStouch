@@ -3,3 +3,4 @@ build
 archive
 .senchasdk
 .DS_Store
+resources/sass/.sass-cache
