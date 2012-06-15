@@ -7,8 +7,11 @@ Ext.define("PMStouch.view.EventMore", {
         title: '추가정보 입력',
         items: [
         {
-            xtype: 'textfield',
+            xtype: 'selectfield',
             itemId: 'event',
+			store: 'RasViewEventListOut',
+			valueField: 'eventId',
+			displayField: 'eventId',
             label: '이벤트 종류'
         },
         {
@@ -16,6 +19,7 @@ Ext.define("PMStouch.view.EventMore", {
             itemId: 'manday',
             value: 1,
             label: 'Man/Day',
+            usePicker: false,
             options: [
             {
                 text: '0.1',

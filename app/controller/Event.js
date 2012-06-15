@@ -99,7 +99,6 @@ Ext.define('PMStouch.controller.Event', {
 	    },
 	
 		changeProject: function(field, value) {
-			console.log(value);
 			PMStouch.setting.set('LastProject', value);
 		},
 		
