@@ -83,17 +83,20 @@ Ext.define("PMStouch.view.EventMore", {
             layout: {
                 type: 'hbox'
             },
+			cls : 'evenButtons',
             items: [
                 {
                     xtype: 'button',
 					itemId : 'send',
                     text: '전송',
+					cls : 'marginR5 eventSend',
                     flex: 1
                 },
                 {
                     xtype: 'button',
 					itemId: 'reset',
-                    text: '화면 초기화',
+                    text: '초기화',
+					cls : 'eventReset',
                     flex: 1
                 }
             ]

@@ -28,6 +28,7 @@ $tabs-bottom-radius: 0em !default;
 @include pictos-iconmask('settings6');
 
 //common style
+.marginR5{margin:0 5px 0 0;}
 .marginRL5{margin:0 5px;}
 
 // form style
@@ -53,5 +54,8 @@ body.x-desktop{font-size:100%;}
 	box-shadow:1px 1px 1px #23344c;
 	color:#efefef;font-size:19px;
 }
+.evenButtons .x-button.x-button-pressing{background:url('../image/bgEventButtonOn.png') no-repeat;}
 .evenButtons .x-button.eventEnd{background-position:0 -55px;}
 .evenButtons .x-button.eventMore{background-position:0 -110px;}
+.evenButtons .x-button.eventSend{background-position:0 -165px;}
+.evenButtons .x-button.eventReset{background-position:0 -220px;}
