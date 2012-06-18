@@ -14,6 +14,7 @@ Ext.define("PMStouch.view.Event", {
 	                xtype: 'textfield',
 	                itemId: 'user',
 	                label: '직원아이디',
+					placeHolder: '아이디를 선택하세요',
 					name: 'resId',
 					flex : 1
 				}, {
@@ -31,6 +32,7 @@ Ext.define("PMStouch.view.Event", {
 	                xtype: 'textfield',
 	                itemId: 'project',
 	                label: '프로젝트',
+					placeHolder: '프로젝트를 선택하세요',
 					name: 'chgSts1',
 					flex: 1
 				}, {
@@ -69,6 +71,7 @@ Ext.define("PMStouch.view.Event", {
 	                xtype: 'textfield',
 	                label: '이벤트',
 	                itemId: 'lastEvent',
+					placeHolder: '마지막 이력정보가 없습니다',
 	                disabled: true
 	            },
 	            {
