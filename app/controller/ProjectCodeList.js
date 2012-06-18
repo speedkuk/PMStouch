@@ -15,7 +15,8 @@ Ext.define('PMStouch.controller.ProjectCodeList', {
 	    },
 
 	    selectResource: function(field, index, target, record) {
-			this.getProjectcode().config.target.setValue(record.get('key1'));
+			this.getProjectcode().config.displayTarget.setValue(record.get('data2'));
+			this.getProjectcode().config.valueTarget.setValue(record.get('key1'));
 			this.getProjectcode().config.navigationView.pop();
 	    }
 });

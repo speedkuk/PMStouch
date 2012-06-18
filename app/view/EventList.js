@@ -2,7 +2,7 @@ Ext.define('PMStouch.view.EventList', {
 	extend : 'Ext.List',
 	xtype : 'eventlist',
 	config : {
-	    itemTpl: '{eventId}',
+	    itemTpl: '{eventId}-{eventDesc}',
 		title : '이벤트 선택',
 	    store : 'RasViewEventListOut'
 	}

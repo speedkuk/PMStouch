@@ -13,8 +13,10 @@ Ext.define('PMStouch.controller.Event', {
             lastEvent: 'event > #eventForm [itemId=lastEvent]',
             lastProjectCode: 'event > #eventForm [itemId=lastProjCode]',
             userField: 'event > #eventForm [itemId=user]',
+			userHiddenField: 'event > #eventForm [name=resId]',
             eventField: 'event > #eventForm [name=eventId]',
-            projectField: 'event > #eventForm [name=chgSts1]',
+            projectField: 'event > #eventForm [itemId=project]',
+			projectHiddenField: 'event > #eventForm [name=chgSts1]',
             billingField: 'event > #eventForm [name=chgSts2]',
             mandayField: 'event > #eventForm [name=chgSts3]',
             moreButton: 'event > #eventForm [itemId=more]',
@@ -34,8 +36,9 @@ Ext.define('PMStouch.controller.Event', {
             userListButton: {
                 tap: 'onUserSelected'
             },
-            projectField: {
-                },
+            projectHiddenField: {
+				change: 'onProjectChanged'
+            },
             projListButton: {
                 tap: 'onProjectSelected'
             },
@@ -52,37 +55,47 @@ Ext.define('PMStouch.controller.Event', {
     },
 
     onInit: function() {
+	    this.getUserField().isField = true;
+        this.getProjectField().isField = true;
+    
         var self = this;
         var defaultuser = PMStouch.setting.get('DefaultUser');
-        var username;
+        var username, usernameDisp;
 
         if (defaultuser) {
             username = defaultuser;
+			usernameDisp = PMStouch.setting.get('DefaultUserDisp');
         } else {
             var lastuser = PMStouch.setting.get('LastUser');
             if (lastuser) {
                 username = lastuser.resId;
+				usernameDisp = lastuser.resDesc;
             }
         }
 
         if (username) {
-            this.getUserField().setValue(username);
+            this.getUserField().setValue(usernameDisp);
+			this.getUserHiddenField().setValue(username);
         }
 
         var defaultproj = PMStouch.setting.get('DefaultProject');
         if (defaultproj) {
-            this.getProjectField().setValue(defaultproj);
+            this.getProjectField().setValue(PMStouch.setting.get('DefaultProjectDisp'));
+			this.getProjectHiddenField().setValue(defaultproj);
         } else {
             var lastproject = PMStouch.setting.get('LastProject');
-            if (lastproject)
-            this.getProjectField().setValue(lastproject);
+            if (lastproject) {
+	            this.getProjectField().setValue(PMStouch.setting.get('LastProjectDisp'));
+				this.getProjectHiddenField().setValue(lastproj);
+			}
         }
     },
 
     onUserSelected: function(field) {
         this.getEvent().push({
             xtype: 'reslist',
-            target: this.getUserField(),
+            displayTarget: this.getUserField(),
+			valueTarget: this.getUserHiddenField(),
             navigationView: this.getEvent()
         });
     },
@@ -110,13 +123,15 @@ Ext.define('PMStouch.controller.Event', {
     onProjectSelected: function(field) {
         this.getEvent().push({
             xtype: 'projectcode',
-            target: this.getProjectField(),
+            displayTarget: this.getProjectField(),
+			valueTarget: this.getProjectHiddenField(),
             navigationView: this.getEvent()
         });
     },
 
-    changeProject: function(field, value) {
+    onProjectChanged: function(field, value) {
         PMStouch.setting.set('LastProject', value);
+        PMStouch.setting.set('LastProjectDisp', this.getProjectField().getValue());
     },
 
     onButtonEventMore: function(field) {

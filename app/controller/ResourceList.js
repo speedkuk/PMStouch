@@ -15,7 +15,8 @@ Ext.define('PMStouch.controller.ResourceList', {
 	    },
 
 	    selectResource: function(field, index, target, record) {
-			this.getReslist().config.target.setValue(record.get('resId'));
+			this.getReslist().config.displayTarget.setValue(record.get('resDesc'));
+			this.getReslist().config.valueTarget.setValue(record.get('resId'));
 			this.getReslist().config.navigationView.pop();
 	    }
 });

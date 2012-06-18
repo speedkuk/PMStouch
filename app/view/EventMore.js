@@ -22,7 +22,7 @@ Ext.define("PMStouch.view.EventMore", {
             placeHolder: '이벤트 종류를 선택하세요',
             store: 'RasViewEventListOut',
             valueField: 'eventId',
-            displayField: 'eventId',
+            displayField: 'eventDesc',
             name: 'eventId',
             label: '이벤트 종류'
         },

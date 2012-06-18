@@ -29,7 +29,6 @@ Ext.define('PMStouch.controller.EventMore', {
                 initialize: 'onInit'
             },
             eventField: {
-                focus: 'onEventSelected',
                 change: 'onEventChanged'
             },
             sendButton: {
@@ -48,6 +47,7 @@ Ext.define('PMStouch.controller.EventMore', {
         this.getLocalTimeToggle().isField = false;
         this.getDateField().isField = false;
         this.getTimeField().isField = false;
+		this.getEventField().setValue(PMStouch.setting.get('LastEvent'));
 		this.getBillingField().setValue((PMStouch.setting.get('DefaultBilling') === 'Y' || PMStouch.setting.get('DefaultBilling') === undefined) ? 1: 0);
     },
 
@@ -72,7 +72,7 @@ Ext.define('PMStouch.controller.EventMore', {
     onSendButton: function() {
         var self = this;
 
-        if(this.getEventField().getValue()) {
+        if(!this.getEventField().getValue()) {
 			Ext.Msg.alert('필수항목', '이벤트를 선택해야 합니다');
 		}
         this.getProjectField().setValue(this.getParentProjectField().getValue());
@@ -94,10 +94,10 @@ Ext.define('PMStouch.controller.EventMore', {
             url: 'service/rasResourceEvent.json',
             method: 'POST',
             success: function() {
-                Ext.Msg.alert(self.getEventField().getValue(), '요청하신 내용이 잘 처리되었습니다.');
+                Ext.Msg.alert(self.getEventField().getRecord().get('eventDesc'), '요청하신 내용이 잘 처리되었습니다.');
             },
             failure: function() {
-                Ext.Msg.alert(self.getEventField().getValue(), '요청하신 내용이 실패하였습니다.');
+                Ext.Msg.alert(self.getEventField().getRecord().get('eventDesc'), '요청하신 내용이 실패하였습니다.');
             }
         });
     },

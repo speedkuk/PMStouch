@@ -20,20 +20,24 @@ Ext.define("PMStouch.view.Event", {
             items: [{
                 xtype: 'fieldset',
                 layout: 'hbox',
-                items: [{
-                    xtype: 'textfield',
-                    itemId: 'user',
-                    label: '직원아이디',
-                    placeHolder: '아이디를 선택하세요',
-                    name: 'resId',
-                    flex: 1
-                },
-                {
-                    xtype: 'button',
-                    itemId: 'userlist',
-                    cls: 'btnSearch',
-                    width: 35
-                }]
+				items: [{
+					xtype: 'textfield',
+					itemId: 'user',
+					label: '직원아이디',
+					placeHolder: '아이디를 선택하세요',
+					flex: 1,
+					disabled: true
+				},	
+				{
+					xtype: 'hiddenfield',
+					name: 'resId'
+				},
+				{
+					xtype: 'button',
+					itemId: 'userlist',
+					cls: 'btnSearch',
+					width: 35
+				}]
             },
             {
                 xtype: 'fieldset',
@@ -44,9 +48,13 @@ Ext.define("PMStouch.view.Event", {
                     itemId: 'project',
                     label: '프로젝트',
                     placeHolder: '프로젝트를 선택하세요',
-                    name: 'chgSts1',
-                    flex: 1
+                    flex: 1,
+					disabled: true
                 },
+				{
+					xtype: 'hiddenfield',
+					name: 'chgSts1'
+				},
                 {
                     xtype: 'button',
                     itemId: 'projlist',
