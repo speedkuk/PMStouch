@@ -19,10 +19,12 @@
      */
     "js": [
         {
-            "path": "sdk/sencha-touch-all.js"
+            "path": "sdk/sencha-touch-all.js",
+			"update": "full"
         },
         {
-            "path": "app.js"
+            "path": "app.js",
+			"update": "full"
         }
     ],
 
@@ -41,7 +43,8 @@
      */
     "css": [
         {
-            "path": "resources/css/app.css"
+            "path": "resources/css/app.css",
+			"update": "full"
         }
     ],
 
@@ -53,6 +56,7 @@
          * List of items in the CACHE MANIFEST section
          */
         "cache": [
+			"app.js"
         ],
         /**
          * List of items in the NETWORK section

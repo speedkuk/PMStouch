@@ -72,7 +72,9 @@ Ext.define('PMStouch.controller.EventMore', {
     onSendButton: function() {
         var self = this;
 
-        this.getEventField().setValue('WRK_END');
+        if(this.getEventField().getValue()) {
+			Ext.Msg.alert('필수항목', '이벤트를 선택해야 합니다');
+		}
         this.getProjectField().setValue(this.getParentProjectField().getValue());
         this.getUserField().setValue(this.getParentUserField().getValue());
 
