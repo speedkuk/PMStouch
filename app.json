@@ -70,7 +70,7 @@
      * Extra resources to be copied along when build
      */
     "extras": [
-        "resources/images",
+        "resources/image",
         "resources/icons",
         "resources/loading",
 		"service"
