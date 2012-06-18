@@ -21,7 +21,7 @@ Ext.application({
     ],
 
 	controllers: ['Event', 'ResourceList', 'Setup', 'ProjectCodeList', 'EventMore', 'EventList'],
-    views: ['Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Login', 'Event', 'EventMore', 'Setup'],
+    views: ['TimePicker', 'TimePickerField', 'Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Login', 'Event', 'EventMore', 'Setup'],
 	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataListOut'],
 	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataListOut.dataList'],
 

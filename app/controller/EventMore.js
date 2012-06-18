@@ -7,6 +7,8 @@ Ext.define('PMStouch.controller.EventMore', {
 				event: 'event',
 	            eventMore: 'eventmore',
 				eventField: 'eventmore [itemId=event]',
+				dateField: 'eventmore [itemId=date]',
+				timeField: 'eventmore [itemId=time]',
 				sendButton: 'eventmore button[itemId=send]',
 				resetButton: 'eventmore button[itemId=reset]'
 	        },
@@ -24,6 +26,9 @@ Ext.define('PMStouch.controller.EventMore', {
 				},
 				resetButton: {
 					tap : 'onResetButton'
+				},
+				'eventmore [itemId=localtime]' : {
+					change: 'onLocalTimeToggle'
 				}
 	        }
 	    },
@@ -43,6 +48,19 @@ Ext.define('PMStouch.controller.EventMore', {
 			});
 	    },
 	
+		onLocalTimeToggle : function(field, x, y, value) {
+			this.getDateField().setDisabled(!value)
+			this.getTimeField().setDisabled(!value)
+			
+			if(value) {
+				this.getDateField().setValue(new Date());
+				this.getTimeField().setValue(new Date());
+			} else {
+				this.getDateField().setValue(null);
+				this.getTimeField().setValue(null);
+			}
+		},
+	
 		onEventChanged: function(field, value) {
 			PMStouch.setting.set('LastEvent', value);
 		},
@@ -61,8 +79,6 @@ Ext.define('PMStouch.controller.EventMore', {
 					Ext.Msg.alert(this.getEventField().getValue(), '요청하신 내용이 실패하였습니다.');
 				}
 			});
-			
-			
 		},
 		
 		onResetButton: function() {
