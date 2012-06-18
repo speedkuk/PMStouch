@@ -26,7 +26,7 @@ Ext.define('PMStouch.controller.Event', {
 
         control: {
             event: {
-                initialize: 'onInitialize'
+                initialize: 'onInit'
             },
             userField: {
                 change: 'onUserChanged'
@@ -51,7 +51,7 @@ Ext.define('PMStouch.controller.Event', {
         }
     },
 
-    onInitialize: function() {
+    onInit: function() {
         var self = this;
         var defaultuser = PMStouch.setting.get('DefaultUser');
         var username;

@@ -1,19 +1,20 @@
 Ext.define("PMStouch.view.EventMore", {
     extend: 'Ext.form.Panel',
     requires: [
-    'Ext.TitleBar',
-    'Ext.dataview.List',
-    'Ext.form.Panel',
-    'Ext.field.Select',
-    'Ext.form.FieldSet',
-    'Ext.navigation.View',
-    'Ext.field.DatePicker',
-	'Ext.field.Toggle',
-    'PMStouch.view.TimePickerField'],
+	    'Ext.TitleBar',
+	    'Ext.dataview.List',
+	    'Ext.form.Panel',
+	    'Ext.field.Select',
+	    'Ext.form.FieldSet',
+	    'Ext.navigation.View',
+	    'Ext.field.DatePicker',
+		'Ext.field.Toggle',
+	    'PMStouch.view.TimePickerField'
+	],
 
     xtype: 'eventmore',
-    config: {
 
+    config: {
         title: '추가정보 입력',
         items: [
         {
@@ -41,8 +42,7 @@ Ext.define("PMStouch.view.EventMore", {
         {
             xtype: 'togglefield',
             name: 'chgSts2',
-            label: 'Billing 여부',
-            value: (PMStouch.setting.get('DefaultBilling') === 'Y' || PMStouch.setting.get('DefaultBilling') === undefined) ? 1: 0
+            label: 'Billing 여부'
         },
         {
             xtype: 'fieldset',
@@ -135,6 +135,5 @@ Ext.define("PMStouch.view.EventMore", {
             }
             ]
         }]
-
     }
 });

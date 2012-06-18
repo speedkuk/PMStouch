@@ -4,7 +4,6 @@ Ext.define('PMStouch.controller.EventMore', {
     'PMStouch.mixin.Setting'
     ],
 
-
     config: {
 
         refs: {
@@ -27,7 +26,7 @@ Ext.define('PMStouch.controller.EventMore', {
 
         control: {
             eventMore: {
-                initialize: 'onInitialize'
+                initialize: 'onInit'
             },
             eventField: {
                 focus: 'onEventSelected',
@@ -45,18 +44,11 @@ Ext.define('PMStouch.controller.EventMore', {
         }
     },
 
-    onInitialize: function() {
+    onInit: function() {
         this.getLocalTimeToggle().isField = false;
         this.getDateField().isField = false;
         this.getTimeField().isField = false;
-    },
-
-    onEventSelected: function(field) {
-        this.getEvent().push({
-            xtype: 'eventlist',
-            target: field,
-            navigationView: this.getEvent()
-        });
+		this.getBillingField().setValue((PMStouch.setting.get('DefaultBilling') === 'Y' || PMStouch.setting.get('DefaultBilling') === undefined) ? 1: 0);
     },
 
     onLocalTimeToggle: function(field, x, y, value) {

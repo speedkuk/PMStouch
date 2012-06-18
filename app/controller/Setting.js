@@ -17,7 +17,7 @@ Ext.define('PMStouch.controller.Setting', {
 
         control: {
             setting: {
-                initialize: 'onInitialize'
+                initialize: 'onInit'
             },
             userField: {
                 change: 'changeUser'
@@ -37,7 +37,7 @@ Ext.define('PMStouch.controller.Setting', {
         }
     },
 
-    onInitialize: function() {
+    onInit: function() {
         this.getUserField().setValue(PMStouch.setting.get('DefaultUser'));
         this.getProjectField().setValue(PMStouch.setting.get('DefaultProject'));
         this.getBillingField().setValue(PMStouch.setting.get('DefaultBilling') === 'N' ? 0: 1);
