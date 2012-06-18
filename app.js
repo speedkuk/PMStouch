@@ -25,7 +25,7 @@ Ext.application({
     ],
 
 	controllers: ['Event', 'ResourceList', 'Setting', 'ProjectCodeList', 'EventMore', 'EventList'],
-    views: ['TimePicker', 'TimePickerField', 'Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Login', 'Event', 'EventMore', 'Setting'],
+    views: ['TimePicker', 'TimePickerField', 'Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Event', 'EventMore', 'Setting'],
 	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataListOut'],
 	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataListOut.dataList'],
 
@@ -42,6 +42,7 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
+		console.log('=============================');
 
 		Ext.Date.defaultFormat = 'Y-m-d H:i:s';
 
@@ -50,6 +51,7 @@ Ext.application({
     },
 
     onUpdated: function() {
+		console.log('--------------------------------');
         Ext.Msg.confirm(
             "Application Update",
             "This application has just successfully been updated to the latest version. Reload now?",
