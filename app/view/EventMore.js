@@ -46,7 +46,7 @@ Ext.define("PMStouch.view.EventMore", {
         },
         {
             xtype: 'fieldset',
-            title: '기여 시간 (퇴근 또는 각종 종료 이벤트시에 입력하세요)',
+            title: '기여 시간 (퇴근/종료 이벤트시 입력)',
             items: [{
                 xtype: 'selectfield',
                 placeHolder: '(기본) 1 Man/Day',

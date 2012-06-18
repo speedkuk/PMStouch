@@ -31,8 +31,8 @@ Ext.define("PMStouch.view.Event", {
                 {
                     xtype: 'button',
                     itemId: 'userlist',
-                    text: '>>',
-                    width: 40
+                    cls: 'btnSearch',
+                    width: 35
                 }]
             },
             {
@@ -50,8 +50,8 @@ Ext.define("PMStouch.view.Event", {
                 {
                     xtype: 'button',
                     itemId: 'projlist',
-                    text: '>>',
-                    width: 40
+                    cls: 'btnSearch',
+                    width: 35
                 }]
             },
             {
@@ -131,7 +131,6 @@ Ext.define("PMStouch.view.Event", {
                 ]
             }]
         }]
-
     }
 
 });
