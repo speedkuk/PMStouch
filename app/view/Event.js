@@ -7,33 +7,59 @@ Ext.define("PMStouch.view.Event", {
 		xtype: 'formpanel',
 		title: '기본정보',
 		itemId: 'eventForm',
-        items: [
-	        {
-	            xtype: 'fieldset',
-	            items: [
-	            {
+        items: [{
+				xtype: 'fieldset',
+				layout: 'hbox',
+				items: [{
 	                xtype: 'textfield',
 	                itemId: 'user',
 	                label: '직원아이디',
-					name: 'resId'
-	            },
+					name: 'resId',
+					flex : 1
+				}, {
+					xtype: 'button',
+					itemId: 'userlist',
+					text : '>>',
+					width : 40
+				}]
+			},
+	        {
+	            xtype: 'fieldset',
+				layout: 'hbox',
+	            items: [
 	            {
 	                xtype: 'textfield',
 	                itemId: 'project',
 	                label: '프로젝트',
-					name: 'chgSts1'
-	            },
-				{
-	                xtype: 'hiddenfield',
-					itemId: 'event',
-					name: 'eventId'
-	            },
-				{
-	                xtype: 'hiddenfield',
-					name: 'procstep',
-					value: 1
-	            }
-	            ]
+					name: 'chgSts1',
+					flex: 1
+				}, {
+					xtype: 'button',
+					itemId: 'projlist',
+					text : '>>',
+					width : 40
+	            }]
+			},
+			{
+                xtype: 'hiddenfield',
+				itemId: 'event',
+				name: 'eventId'
+            },
+			{
+                xtype: 'hiddenfield',
+				name: 'procstep',
+				value: 1
+            },
+			{
+				xtype: 'hiddenfield',
+				itemId: 'billing',
+				name: 'chgSts2'
+			},
+			{
+				xtype: 'hiddenfield',
+				itemId: 'manday',
+				name: 'chgSts3',
+				value: 1
 	        },
 	        {
 	            xtype: 'fieldset',
@@ -56,7 +82,7 @@ Ext.define("PMStouch.view.Event", {
 	                label: '시간',
 	                itemId: 'lastTime',
 	                disabled: true
-	            }
+				}
 	            ]
 	        },
 	        {

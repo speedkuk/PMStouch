@@ -12,7 +12,7 @@ Ext.define("PMStouch.view.Main", {
 		                iconCls: 'list'
 		            },
 		            {
-		                xtype: 'setup',
+		                xtype: 'setting',
 		                iconCls: 'settings6'
 		            }
 		        ],

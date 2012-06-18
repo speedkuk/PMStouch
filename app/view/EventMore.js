@@ -8,22 +8,36 @@ Ext.define("PMStouch.view.EventMore", {
         items: [
         {
             xtype: 'selectfield',
-            itemId: 'event',
 			placeHolder: '이벤트 종류를 선택하세요',
 			store: 'RasViewEventListOut',
 			valueField: 'eventId',
 			displayField: 'eventId',
+			name: 'eventId',
             label: '이벤트 종류'
         },
+		{
+			xtype: 'hiddenfield',
+			name: 'resId'
+		},
+		{
+			xtype: 'hiddenfield',
+			name: 'chgSts1'
+		},
+		{
+		    xtype: 'togglefield',
+		    name: 'chgSts2',
+		    label: 'Billing 여부',
+			value: (PMStouch.setting.get('DefaultBilling') === 'Y' || PMStouch.setting.get('DefaultBilling') === undefined) ? 1 : 0
+		},
 		{
 			xtype : 'fieldset',
 			title : '기여 시간 (퇴근 또는 각종 종료 이벤트시에 입력하세요)',
 			items : [{
 	            xtype: 'selectfield',
-	            itemId: 'manday',
 				placeHolder: '(기본) 1 Man/Day',
 	            value: 1,
 	            label: 'Man/Day',
+				name: 'chgSts3',
 	            usePicker: false,
 	            options: [
 	            {
@@ -59,9 +73,8 @@ Ext.define("PMStouch.view.EventMore", {
 			items : [{
 			    xtype: 'togglefield',
 				itemId: 'localtime',
-			    name: 'localtime',
 			    label: '시간 설정 여부',
-				value: false
+				isField: false
 			}, {
 	            xtype: 'datepickerfield',
 	            itemId: 'date',
@@ -72,8 +85,13 @@ Ext.define("PMStouch.view.EventMore", {
 	        {
 	            xtype: 'timepickerfield',
 	            itemId: 'time',
-				placeHolder: '(기본)현재 서버 시간',
+				placeHolder: '(기본)현재 시간',
 	            label: '발생 시간',
+				disabled: true
+            },
+			{
+				xtype: 'hiddenfield',
+				name: 'backTime',
 				disabled: true
 			}]
         },

@@ -10,11 +10,15 @@ Ext.define('PMStouch.controller.Event', {
 				lastEvent: 'event > #eventForm [itemId=lastEvent]',
 				lastProjectCode: 'event > #eventForm [itemId=lastProjCode]',
 				userField: 'event > #eventForm [itemId=user]',
-				projectField: 'event > #eventForm [itemId=project]',
-				eventField: 'event > #eventForm [itemId=event]',
+				eventField: 'event > #eventForm [name=eventId]',
+				projectField: 'event > #eventForm [name=chgSts1]',
+				billingField: 'event > #eventForm [name=chgSts2]',
+				mandayField: 'event > #eventForm [name=chgSts3]',
 				moreButton: 'event > #eventForm [itemId=more]',
 				startButton: 'event > #eventForm [itemId=start]',
-				endButton: 'event > #eventForm [itemId=end]'
+				endButton: 'event > #eventForm [itemId=end]',
+				userListButton: 'event > #eventForm button[itemId=userlist]',
+				projListButton: 'event > #eventForm button[itemId=projlist]'
 	        },
 		
 	        control: {
@@ -22,12 +26,16 @@ Ext.define('PMStouch.controller.Event', {
 					initialize : 'onInitialize'
 				},
 	            userField: {
-	                focus: 'onUserSelected',
 					change: 'onUserChanged'
 	            },
+				userListButton: {
+					tap : 'onUserSelected'
+				},
 				projectField: {
-	                focus: 'onProjectSelected'
 	            },
+				projListButton: {
+	                tap: 'onProjectSelected'
+				},
 				moreButton: {
 	                tap: 'onButtonEventMore'
 	            },
@@ -71,7 +79,7 @@ Ext.define('PMStouch.controller.Event', {
 	    onUserSelected: function(field) {
 	        this.getEvent().push({
 				xtype: 'reslist',
-				target: field,
+				target: this.getUserField(),
 				navigationView: this.getEvent()
 			});
 	    },
@@ -99,7 +107,7 @@ Ext.define('PMStouch.controller.Event', {
 		onProjectSelected: function(field) {
 	        this.getEvent().push({
 				xtype: 'projectcode',
-				target: field,
+				target: this.getProjectField(),
 				navigationView: this.getEvent()
 			});
 	    },
@@ -124,6 +132,7 @@ Ext.define('PMStouch.controller.Event', {
 		onButtonStart: function(field) {
 			
 			this.getEventField().setValue('WRK_START');
+			this.getBillingField().setValue(PMStouch.setting.get('DefaultBilling') || 'Y');
 			
 			this.getForm().submit({
 				url: 'service/rasResourceEvent.json',
@@ -142,6 +151,7 @@ Ext.define('PMStouch.controller.Event', {
 		onButtonEnd: function(field) {
 			
 			this.getEventField().setValue('WRK_END');
+			this.getBillingField().setValue(PMStouch.setting.get('DefaultBilling') || 'Y');
 			
 			this.getForm().submit({
 				url: 'service/rasResourceEvent.json',

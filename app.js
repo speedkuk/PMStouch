@@ -13,6 +13,10 @@ Ext.define('PMStouch', {
 	}
 });
 
+Date.prototype.toString = function() {
+	return Ext.Date.format(this, 'Y-m-d H:i:s');
+};
+
 Ext.application({
     name: 'PMStouch',
 
@@ -20,8 +24,8 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-	controllers: ['Event', 'ResourceList', 'Setup', 'ProjectCodeList', 'EventMore', 'EventList'],
-    views: ['TimePicker', 'TimePickerField', 'Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Login', 'Event', 'EventMore', 'Setup'],
+	controllers: ['Event', 'ResourceList', 'Setting', 'ProjectCodeList', 'EventMore', 'EventList'],
+    views: ['TimePicker', 'TimePickerField', 'Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Login', 'Event', 'EventMore', 'Setting'],
 	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataListOut'],
 	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataListOut.dataList'],
 
@@ -38,6 +42,8 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
+
+		Ext.Date.defaultFormat = 'Y-m-d H:i:s';
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('PMStouch.view.Main'));
