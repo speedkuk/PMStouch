@@ -84,7 +84,6 @@ Ext.define("PMStouch.view.EventMore", {
         },
         {
             xtype: 'fieldset',
-            title: '이벤트 시간 설정',
             items: [{
                 xtype: 'togglefield',
                 itemId: 'localtime',

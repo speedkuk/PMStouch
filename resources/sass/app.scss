@@ -3,6 +3,7 @@ $global-row-height: 2em !default;
 $form-field-height: 2em !default;
 $form-spacing: .3em !default;
 $tabs-bottom-radius: 0em !default;
+$form-thumb-size:1.5em;
 
 @import 'sencha-touch/default/all';
 
@@ -64,4 +65,4 @@ body.x-desktop{font-size:100%;}
 .btnSearch.x-button-pressing{background:url('../image/btnSearch.png') 35% -23px no-repeat;}
 
 // style
-.x-slider,.x-toggle{height:1.5em;}
+.x-slider,.x-toggle{height:1.5em;width:5em;}
