@@ -17,6 +17,11 @@ Ext.define("PMStouch.view.EventMore", {
         },
 		{
 			xtype: 'hiddenfield',
+			name: 'procstep',
+			value: 1
+		},
+		{
+			xtype: 'hiddenfield',
 			name: 'resId'
 		},
 		{
