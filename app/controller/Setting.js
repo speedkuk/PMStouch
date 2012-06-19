@@ -40,6 +40,9 @@ Ext.define('PMStouch.controller.Setting', {
     },
 
     onInit: function() {
+	    this.getUserField().isField = true;
+        this.getProjectField().isField = true;
+    
         this.getUserField().setValue(PMStouch.setting.get('DefaultUserDisp'));
         this.getUserHiddenField().setValue(PMStouch.setting.get('DefaultUser'));
         this.getProjectField().setValue(PMStouch.setting.get('DefaultProjectDisp'));

@@ -41,8 +41,12 @@ Ext.define("PMStouch.view.EventMore", {
         },
         {
             xtype: 'togglefield',
-            name: 'chgSts2',
+			itemId: 'billing',
             label: 'Billing 여부'
+        },
+        {
+            xtype: 'hiddenfield',
+            name: 'chgSts2'
         },
         {
             xtype: 'fieldset',

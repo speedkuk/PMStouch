@@ -14,7 +14,8 @@ Ext.define('PMStouch.controller.EventMore', {
             eventField: 'eventmore [name=eventId]',
             userField: 'eventmore [name=resId]',
             projectField: 'eventmore [name=chgSts1]',
-            billingField: 'eventmore [name=chgSts2]',
+			billingField: 'eventmore [itemId=billing]',
+            billingHiddenField: 'eventmore [name=chgSts2]',
             mandayField: 'eventmore [name=chgSts3]',
             localTimeToggle: 'eventmore [itemId=localtime]',
             dateField: 'eventmore [itemId=date]',
@@ -47,6 +48,8 @@ Ext.define('PMStouch.controller.EventMore', {
         this.getLocalTimeToggle().isField = false;
         this.getDateField().isField = false;
         this.getTimeField().isField = false;
+		this.getBillingField().isField = false;
+
 		this.getEventField().setValue(PMStouch.setting.get('LastEvent'));
 		this.getBillingField().setValue((PMStouch.setting.get('DefaultBilling') === 'Y' || PMStouch.setting.get('DefaultBilling') === undefined) ? 1: 0);
     },
@@ -77,6 +80,7 @@ Ext.define('PMStouch.controller.EventMore', {
 		}
         this.getProjectField().setValue(this.getParentProjectField().getValue());
         this.getUserField().setValue(this.getParentUserField().getValue());
+		this.getBillingHiddenField().setValue(this.getBillingField().getValue() ? 'Y' : 'N');
 
         if (this.getLocalTimeToggle().getValue()) {
             var datetime = this.getDateField().getValue();

@@ -22,6 +22,7 @@ Ext.define("PMStouch.view.Setting", {
                     itemId: 'user',
                     label: '직원아이디',
                     placeHolder: '기본사용 아이디를 선택하세요',
+					disabled: true,
                     flex: 1
                 },
 				{
@@ -44,6 +45,7 @@ Ext.define("PMStouch.view.Setting", {
                     itemId: 'project',
                     label: '프로젝트',
                     placeHolder: '기본사용 프로텍트를 선택하세요',
+					disabled: true,
                     flex: 1
                 },
 				{
