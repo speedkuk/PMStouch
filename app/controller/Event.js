@@ -86,7 +86,7 @@ Ext.define('PMStouch.controller.Event', {
             var lastproject = PMStouch.setting.get('LastProject');
             if (lastproject) {
 	            this.getProjectField().setValue(PMStouch.setting.get('LastProjectDisp'));
-				this.getProjectHiddenField().setValue(lastproj);
+				this.getProjectHiddenField().setValue(lastproject);
 			}
         }
     },

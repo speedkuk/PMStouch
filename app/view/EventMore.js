@@ -24,6 +24,7 @@ Ext.define("PMStouch.view.EventMore", {
             valueField: 'eventId',
             displayField: 'eventDesc',
             name: 'eventId',
+			usePicker: false,
             label: '이벤트 종류'
         },
         {
