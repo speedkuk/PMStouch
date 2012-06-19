@@ -26,8 +26,8 @@ Ext.application({
 
 	controllers: ['Event', 'ResourceList', 'Setting', 'ProjectCodeList', 'EventMore', 'EventList'],
     views: ['TimePicker', 'TimePickerField', 'Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Event', 'EventMore', 'Setting'],
-	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataListOut'],
-	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataListOut.dataList'],
+	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataListOut', 'RasViewResourceHistoryOut'],
+	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataListOut.dataList', 'RasViewResourceHistoryOut.histList'],
 
     icon: {
         57: 'resources/icons/Icon.png',
