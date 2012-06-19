@@ -19,7 +19,7 @@ Ext.define('PMStouch.store.RasViewResourceHistoryOut', {
             },
             extraParams: {
                 procstep: '1',
-				resId: 'DCLN001',
+				resId: '7320001',
 				nextHisSeq: '577', // 2147483647
 				fromTime: '20111107',
 				toTime: '20120619',

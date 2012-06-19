@@ -30,7 +30,7 @@ Ext.define('PMStouch.controller.Event', {
             event: {
                 initialize: 'onInit'
             },
-            userField: {
+            userHiddenField: {
                 change: 'onUserChanged'
             },
             userListButton: {
@@ -113,9 +113,9 @@ Ext.define('PMStouch.controller.Event', {
 
                 PMStouch.setting.set('LastUser', rc);
 
-                self.getLastTime().setValue(rc.lastEventTime);
-                self.getLastEvent().setValue(rc.lastEventId);
-                self.getLastProjectCode().setValue(rc.resSts1);
+               	self.getLastTime().setValue(rc.lastEventTime);
+               	self.getLastEvent().setValue(self.getEventName(rc.lastEventId));
+               	self.getLastProjectCode().setValue(self.getProjectName(rc.resSts1));
             }
         });
     },
@@ -182,6 +182,36 @@ Ext.define('PMStouch.controller.Event', {
             }
         });
 
-    }
+    },
+
+	getEventName: function(eventId) {
+		if(!eventId)
+			return '';
+		var store = Ext.getStore('RasViewEventListOut');
+		var record = store.findRecord('eventId', eventId);
+		if(record)
+			return record.get('eventDesc');
+		return '';
+	},
+	
+	getResourceName: function(resId) {
+		if(!resId)
+			return '';
+		var store = Ext.getStore('RasViewResourceListOut');
+		var record = store.findRecord('resId', resId);
+		if(record)
+			return record.get('resDesc');
+		return '';
+	},
+	
+	getProjectName: function(projectId) {
+		if(!projectId)
+			return '';
+		var store = Ext.getStore('BasViewDataListOut');
+		var record = store.findRecord('key1', projectId);
+		if(record)
+			return record.get('data2');
+		return '';
+	}
 
 });

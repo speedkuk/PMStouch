@@ -23,5 +23,8 @@
 "procCount": 0,
 "lastDownHistSeq": 0,
 "lastActiveHistSeq": 0,
-"lastHistSeq": 1
+"lastHistSeq": 1,
+"lastEventId": "EDU_IN",
+"resSts1": "SRAC-1100022",
+"lastEventTime": "20120615021456"
 }

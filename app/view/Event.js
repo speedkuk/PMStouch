@@ -15,7 +15,7 @@ Ext.define("PMStouch.view.Event", {
     config: {
         items: [{
             xtype: 'formpanel',
-            title: '기본정보',
+            title: '기본정보1',
             itemId: 'eventForm',
             items: [{
                 xtype: 'fieldset',
