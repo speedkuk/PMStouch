@@ -1,8 +1,10 @@
 Ext.define('PMStouch.store.RasViewResourceHistoryOut', {
     extend: 'Ext.data.Store',
     config: {
-        autoLoad: true,
-        pageSize: 1000,
+        autoLoad: false,
+        pageSize: 20,
+		// TODO Reverse Time Sort.
+
         model: 'PMStouch.model.RasViewResourceHistoryOut.histList',
 
         proxy: {
@@ -16,14 +18,6 @@ Ext.define('PMStouch.store.RasViewResourceHistoryOut', {
             reader: {
                 type: 'json',
                 rootProperty: 'histList'
-            },
-            extraParams: {
-                procstep: '1',
-				resId: '7320001',
-				nextHisSeq: '577', // 2147483647
-				fromTime: '20111107',
-				toTime: '20120619',
-				includeDelHist: 'Y'
             }
         }
     }
