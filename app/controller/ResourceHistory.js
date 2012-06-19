@@ -20,6 +20,7 @@ Ext.define('PMStouch.controller.ResourceHistory', {
 
 	onActivate: function() {
 		// this.getReshistory().removeAll();
+		var self = this;
 
 		if(!PMStouch.setting.get('LastUser'))
 			return;
@@ -40,8 +41,50 @@ Ext.define('PMStouch.controller.ResourceHistory', {
 				fromTime: from,
 				toTime: to,
 				includeDelHist: ' '
+			}, 
+			callback : function(records, operation, success) {
+				if(!success) {
+					Ext.Msg.alert('서비스 오류', '이력 정보를 가져오지 못했습니다.');
+					return;
+				}
+				
+				Ext.Array.each(records, function(record) {
+					var proj = record.get('newSts1');
+					var event = record.get('eventId');
+					record.set('newSts1', self.getProjectName(proj) || proj);
+					record.set('eventId', self.getEventName(event) || event);
+				});
 			}
 		});
+	},
+	
+	getEventName: function(eventId) {
+		if(!eventId)
+			return '';
+		var store = Ext.getStore('RasViewEventListOut');
+		var record = store.findRecord('eventId', eventId);
+		if(record)
+			return record.get('eventDesc');
+		return '';
+	},
+	
+	getResourceName: function(resId) {
+		if(!resId)
+			return '';
+		var store = Ext.getStore('RasViewResourceListOut');
+		var record = store.findRecord('resId', resId);
+		if(record)
+			return record.get('resDesc');
+		return '';
+	},
+	
+	getProjectName: function(projectId) {
+		if(!projectId)
+			return '';
+		var store = Ext.getStore('BasViewDataListOut');
+		var record = store.findRecord('key1', projectId);
+		if(record)
+			return record.get('data2');
+		return '';
 	}
-
 });
