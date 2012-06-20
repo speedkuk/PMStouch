@@ -24,7 +24,7 @@ Ext.define("PMStouch.view.Event", {
 				items: [{
 					xtype: 'textfield',
 					itemId: 'user',
-					label: '직원아이디',
+					label: '직원이름',
 					placeHolder: '아이디를 선택하세요',
 					flex: 1,
 					disabled: true

@@ -15,12 +15,26 @@ Ext.define("PMStouch.view.Setting", {
             xtype: 'formpanel',
             title: '기본정보',
             items: [{
+				xtype: 'fieldset',
+				items: [
+	            {
+	                xtype: 'textfield',
+	                itemId: 'company',
+					value: 'MIRACOM',
+	                label: '회사',
+					disabled : true,
+	                placeHolder: '기본사용 회사를 입력하세요',
+	                flex: 1
+	            }]
+			},
+			{
                 xtype: 'fieldset',
                 layout: 'hbox',
-                items: [{
+                items: [
+				{
                     xtype: 'textfield',
                     itemId: 'user',
-                    label: '직원아이디',
+                    label: '직원이름',
                     placeHolder: '기본사용 아이디를 선택하세요',
 					disabled: true,
                     flex: 1
@@ -59,7 +73,7 @@ Ext.define("PMStouch.view.Setting", {
                     width: 35
                 }]
             },
-            {
+			{
                 xtype: 'fieldset',
                 items: [{
                     xtype: 'togglefield',

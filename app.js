@@ -9,7 +9,8 @@ Ext.Loader.setPath({
 Ext.define('PMStouch', {
 	singleton : true,
 	mixins : {
-		setting : 'PMStouch.mixin.Setting'
+		setting : 'PMStouch.mixin.Setting',
+		base64 : 'PMStouch.mixin.Base64'
 	}
 });
 
@@ -43,14 +44,7 @@ Ext.application({
 
 		Ext.Date.defaultFormat = 'Y-m-d H:i:s';
 
-		/* 개발모드인 경우는 아래와 같이 */
-		// if(document.location.href.indexOf('/m/') >= 0)
-		// 	this.autoLogin();
-		// else
-		// 	document.location.href = '#main';
-
-			this.autoLogin();
-
+		this.autoLogin();
     },
 
     onUpdated: function() {
@@ -86,13 +80,13 @@ Ext.application({
 	autoLogin: function() {
 		var self = this;
 		var login = PMStouch.setting.get('DefaultLogin');
-		var pwd = PMStouch.setting.get('DefaultPassword');
+		var pwd = PMStouch.base64.decode(PMStouch.setting.get('DefaultPassword'));
+		var company = PMStouch.setting.get('DefaultCompany') || 'MIRACOM';
 
 		if(!login) {
 			Ext.Viewport.removeAll(true, true);
 			Ext.Viewport.add(Ext.create('PMStouch.view.Login', {}));
 			
-			// document.location.href = '#login';
 			return;
 		}
 		
@@ -102,19 +96,17 @@ Ext.application({
 			params: {
 				j_username : login,
 				j_password : pwd,
-				j_factory : 'MIRACOM'
+				j_factory : company
 			},
 			success: function() {
-		        // Destroy the #appLoadingIndicator element
 				self.gotoMain();
+		        // Destroy the #appLoadingIndicator element
 		        Ext.fly('appLoadingIndicator').destroy();
-				// document.location.href = '#main';
 			},
 			failure: function() {
-		        // Destroy the #appLoadingIndicator element
 				self.gotoLogin();
+		        // Destroy the #appLoadingIndicator element
 		        Ext.fly('appLoadingIndicator').destroy();
-				// document.location.href = '#login';
 			}
 		})
 	}

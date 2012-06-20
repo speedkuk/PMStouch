@@ -51,7 +51,7 @@ Ext.define('PMStouch.controller.EventMore', {
 		this.getBillingField().isField = false;
 
 		this.getEventField().setValue(PMStouch.setting.get('LastEvent'));
-		this.getBillingField().setValue((PMStouch.setting.get('DefaultBilling') === 'Y' || PMStouch.setting.get('DefaultBilling') === undefined) ? 1: 0);
+		this.getBillingField().setValue((PMStouch.setting.get('DefaultBilling') === 'N') ? 0 : 1);
     },
 
     onLocalTimeToggle: function(field, x, y, value) {

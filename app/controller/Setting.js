@@ -11,6 +11,7 @@ Ext.define('PMStouch.controller.Setting', {
 
         refs: {
             setting: 'setting',
+			companyField: 'setting [itemId=company]',
             userField: 'setting [itemId=user]',
 			userHiddenField: 'setting [name=resId]',
             projectField: 'setting [itemId=project]',
@@ -25,6 +26,9 @@ Ext.define('PMStouch.controller.Setting', {
             setting: {
                 initialize: 'onInit'
             },
+			companyField: {
+				change: 'onCompanyChanged'
+			},
             userHiddenField: {
                 change: 'changeUser'
             },
@@ -55,12 +59,18 @@ Ext.define('PMStouch.controller.Setting', {
 	    this.getUserField().isField = true;
         this.getProjectField().isField = true;
     
+		this.getCompanyField().setValue(PMStouch.setting.get('DefaultCompany') || 'MIRACOM');
         this.getUserField().setValue(PMStouch.setting.get('DefaultUserDisp'));
         this.getUserHiddenField().setValue(PMStouch.setting.get('DefaultUser'));
         this.getProjectField().setValue(PMStouch.setting.get('DefaultProjectDisp'));
         this.getProjectHiddenField().setValue(PMStouch.setting.get('DefaultProject'));
         this.getBillingField().setValue(PMStouch.setting.get('DefaultBilling') === 'N' ? 0: 1);
     },
+	
+	onCompanyChanged: function(field, value) {
+		var company = value ? value.toUpperCase() : 'MIRACOM';
+        PMStouch.setting.set('DefaultCompany', value);
+	},
 
     selectUser: function(field) {
         this.getSetting().push({
