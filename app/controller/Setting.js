@@ -5,6 +5,9 @@ Ext.define('PMStouch.controller.Setting', {
     ],
 
     config: {
+		routes: {
+			setting: 'onSetting'
+		},
 
         refs: {
             setting: 'setting',
@@ -14,7 +17,8 @@ Ext.define('PMStouch.controller.Setting', {
 			projectHiddenField: 'setting [name=chgSts1]',
             billingField: 'setting [itemId=billing]',
             userListButton: 'setting button[itemId=userlist]',
-            projListButton: 'setting button[itemId=projlist]'
+            projListButton: 'setting button[itemId=projlist]',
+			logoutButton: 'setting button[itemId=logout]'
         },
 
         control: {
@@ -35,9 +39,17 @@ Ext.define('PMStouch.controller.Setting', {
             },
             billingField: {
                 change: 'changeBilling'
-            }
+            },
+			logoutButton: {
+				tap: 'onLogout'
+			}
         }
     },
+	
+	onSetting: function() {
+		if(this.getSetting())
+			this.getSetting().show();
+	},
 
     onInit: function() {
 	    this.getUserField().isField = true;
@@ -80,6 +92,17 @@ Ext.define('PMStouch.controller.Setting', {
 
     changeBilling: function(field, x, y, value) {
         PMStouch.setting.set('DefaultBilling', value ? 'Y': 'N');
-    }
+    },
+
+	onLogout: function() {
+		Ext.Msg.confirm('로그아웃', '정말 로그아웃하시겠습니까?', function(confirm) {
+			if (confirm === 'yes') {
+				PMStouch.setting.set('DefaultLogin', '');
+				PMStouch.setting.set('DefaultPassword', '');
+
+				document.location.href = 'logout';
+			}
+		});
+	}
 
 });

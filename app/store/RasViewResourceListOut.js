@@ -1,7 +1,7 @@
 Ext.define('PMStouch.store.RasViewResourceListOut', {
     extend: 'Ext.data.Store',
     config: {
-        autoLoad: true,
+        autoLoad: false,
         pageSize: 1000,
         model: 'PMStouch.model.RasViewResourceListOut.resList',
 

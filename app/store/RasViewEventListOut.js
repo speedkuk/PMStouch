@@ -1,7 +1,7 @@
 Ext.define('PMStouch.store.RasViewEventListOut', {
 	extend : 'Ext.data.Store',
 	config : {
-		autoLoad : true,
+		autoLoad : false,
 		pageSize : 1000,
 		model : 'PMStouch.model.RasViewEventListOut.eventList',
 		proxy : {

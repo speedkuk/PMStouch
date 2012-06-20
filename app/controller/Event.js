@@ -5,6 +5,9 @@ Ext.define('PMStouch.controller.Event', {
     ],
 
     config: {
+		routes: {
+			event: 'onEvent'
+		},
 
         refs: {
             event: 'event',
@@ -53,6 +56,11 @@ Ext.define('PMStouch.controller.Event', {
             }
         }
     },
+
+	onEvent: function() {
+		if(this.getEvent())
+			this.getEvent().activate();
+	},
 
     onInit: function() {
 	    this.getUserField().isField = true;
@@ -114,8 +122,8 @@ Ext.define('PMStouch.controller.Event', {
                 PMStouch.setting.set('LastUser', rc);
 
                	self.getLastTime().setValue(rc.lastEventTime);
-               	self.getLastEvent().setValue(self.getEventName(rc.lastEventId));
-               	self.getLastProjectCode().setValue(self.getProjectName(rc.resSts1));
+               	self.getLastEvent().setValue(self.getEventName(rc.lastEventId) || rc.lastEventId);
+               	self.getLastProjectCode().setValue(self.getProjectName(rc.resSts1) || rc.resSts1);
             }
         });
     },

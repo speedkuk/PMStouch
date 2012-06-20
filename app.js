@@ -24,8 +24,8 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-	controllers: ['Event', 'ResourceList', 'Setting', 'ProjectCodeList', 'EventMore', 'EventList', 'ResourceHistory'],
-    views: ['TimePicker', 'TimePickerField', 'Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Event', 'EventMore', 'Setting'],
+	controllers: ['Main', 'Login', 'Event', 'ResourceList', 'Setting', 'ProjectCodeList', 'EventMore', 'EventList', 'ResourceHistory'],
+    views: ['Login', 'TimePicker', 'TimePickerField', 'Main', 'ResourceList', 'ResourceHistory', 'EventList', 'ProjectCodeList', 'Event', 'EventMore', 'Setting'],
 	stores : ['RasViewResourceListOut', 'RasViewResourceOut', 'RasViewEventListOut', 'BasViewDataListOut', 'RasViewResourceHistoryOut'],
 	models : ['RasViewResourceListOut.resList', 'RasViewResourceOut', 'RasViewEventListOut.eventList', 'BasViewDataListOut.dataList', 'RasViewResourceHistoryOut.histList'],
 
@@ -40,22 +40,82 @@ Ext.application({
     tabletStartupScreen: 'resources/loading/Homescreen~ipad.jpg',
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
 
 		Ext.Date.defaultFormat = 'Y-m-d H:i:s';
 
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('PMStouch.view.Main'));
+		/* 개발모드인 경우는 아래와 같이 */
+		// if(document.location.href.indexOf('/m/') >= 0)
+		// 	this.autoLogin();
+		// else
+		// 	document.location.href = '#main';
+
+			this.autoLogin();
+
     },
 
     onUpdated: function() {
         Ext.Msg.confirm(
-            "Application Update",
-            "This application has just successfully been updated to the latest version. Reload now?",
+            "프로그램 업데이트",
+            "이 프로그램이 새로운 버전을 다운로드하였습니다. 페이지를 새로 여시겠습니까?",
             function() {
                 window.location.reload();
             }
         );
-    }
+    },
+
+	gotoLogin: function() {
+		Ext.Viewport.removeAll(true, true);
+		Ext.Viewport.add(Ext.create('PMStouch.view.Login', {}));
+	},
+	
+	gotoMain: function() {
+		var count = 0;
+
+		function forSync() {
+			if(++count === 3) {
+				Ext.Viewport.removeAll(true, true);
+				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {}));
+			}
+		}
+
+		Ext.getStore('BasViewDataListOut').load(forSync);
+		Ext.getStore('RasViewEventListOut').load(forSync);
+		Ext.getStore('RasViewResourceListOut').load(forSync);
+	},
+	
+	autoLogin: function() {
+		var self = this;
+		var login = PMStouch.setting.get('DefaultLogin');
+		var pwd = PMStouch.setting.get('DefaultPassword');
+
+		if(!login) {
+			Ext.Viewport.removeAll(true, true);
+			Ext.Viewport.add(Ext.create('PMStouch.view.Login', {}));
+			
+			// document.location.href = '#login';
+			return;
+		}
+		
+		Ext.Ajax.request({
+			url : '../j_spring_security_check',
+			method: 'POST',
+			params: {
+				j_username : login,
+				j_password : pwd,
+				j_factory : 'MIRACOM'
+			},
+			success: function() {
+		        // Destroy the #appLoadingIndicator element
+				self.gotoMain();
+		        Ext.fly('appLoadingIndicator').destroy();
+				// document.location.href = '#main';
+			},
+			failure: function() {
+		        // Destroy the #appLoadingIndicator element
+				self.gotoLogin();
+		        Ext.fly('appLoadingIndicator').destroy();
+				// document.location.href = '#login';
+			}
+		})
+	}
 });

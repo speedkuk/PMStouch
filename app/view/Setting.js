@@ -67,7 +67,13 @@ Ext.define("PMStouch.view.Setting", {
                     label: 'Billing 여부',
                     value: 1
                 }]
-            }]
+            },
+			{
+				xtype: 'button',
+				itemId: 'logout',
+				text: '로그아웃',
+				docked: 'bottom'
+			}]
         }]
     }
 });

@@ -6,6 +6,9 @@ Ext.define('PMStouch.controller.ResourceHistory', {
     ],
 
     config: {
+		routes: {
+			reshistory: 'onResHistory'
+		},
 
         refs: {
             reshistory: 'reshistory'
@@ -17,6 +20,11 @@ Ext.define('PMStouch.controller.ResourceHistory', {
             }
         }
     },
+
+	onResHistory: function() {
+		if(this.getReshistory())
+			this.getReshistory().show();
+	},
 
 	onActivate: function() {
 		// this.getReshistory().removeAll();
