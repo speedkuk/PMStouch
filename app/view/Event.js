@@ -20,6 +20,7 @@ Ext.define("PMStouch.view.Event", {
             items: [{
                 xtype: 'fieldset',
                 layout: 'hbox',
+				cls : 'singleLine',
 				items: [{
 					xtype: 'textfield',
 					itemId: 'user',
@@ -42,6 +43,7 @@ Ext.define("PMStouch.view.Event", {
             {
                 xtype: 'fieldset',
                 layout: 'hbox',
+				cls : 'singleLine',
                 items: [
                 {
                     xtype: 'textfield',
