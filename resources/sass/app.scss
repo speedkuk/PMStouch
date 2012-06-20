@@ -76,6 +76,10 @@ body.x-desktop{font-size:100%;}
 .evenButtons .x-button.eventReset{background-position:0 -220px;}
 .btnSearch{background:url('../image/btnSearch.png') 35% 7px no-repeat;border:0;}
 .btnSearch.x-button-pressing{background:url('../image/btnSearch.png') 35% -28px no-repeat;}
+.x-button.eventEnd{
+	background:url('../image/bgEventButton.png') 0 -55px no-repeat;border:1px solid #222;padding:.8em 0em .8em 2em;
+	box-shadow:1px 1px 1px #23344c;color:#efefef;font-size:19px;
+}
 
 // toggle style
 .x-slider,.x-toggle{height:1.5em;width:5em;}

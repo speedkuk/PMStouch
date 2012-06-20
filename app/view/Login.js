@@ -5,13 +5,6 @@ Ext.define('PMStouch.view.Login', {
 
     config: {
 
-        scroll: 'vertical',
-
-        centered: true,
-
-        height: 250,
-        width: 300,
-        modal: true,
 
         url: '../j_spring_security_check',
 

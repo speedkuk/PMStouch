@@ -86,6 +86,7 @@ Ext.define("PMStouch.view.Setting", {
 				xtype: 'button',
 				itemId: 'logout',
 				text: '로그아웃',
+				cls: 'eventEnd',
 				docked: 'bottom'
 			}]
         }]
