@@ -14,18 +14,20 @@ Ext.define('PMStouch.view.Login', {
         },
         {
             xtype: 'textfield',
-            label: '로그인 아이디',
+            label: '로그인',
+			placeHolder: '로그인 아이디 입력',
             name: 'j_username'
         },
         {
             xtype: 'passwordfield',
             label: '패스워드',
+			placeHolder: '패스워드 입력',
             name: 'j_password'
         },
 		{
             xtype: 'togglefield',
             itemId: 'save',
-            label: '패스워드 저장',
+            label: '저장',
             value: 1
 		},
         {

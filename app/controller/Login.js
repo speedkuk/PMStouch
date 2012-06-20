@@ -95,7 +95,7 @@ Ext.define('PMStouch.controller.Login', {
 		function forSync() {
 			if(++count === 3) {
 				Ext.Viewport.removeAll(true, true);
-				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {}));
+				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {})).show();
 			}
 		}
 

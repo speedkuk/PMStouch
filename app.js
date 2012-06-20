@@ -59,7 +59,7 @@ Ext.application({
 
 	gotoLogin: function() {
 		Ext.Viewport.removeAll(true, true);
-		Ext.Viewport.add(Ext.create('PMStouch.view.Login', {}));
+		Ext.Viewport.add(Ext.create('PMStouch.view.Login', {})).show();
 	},
 	
 	gotoMain: function() {
@@ -68,7 +68,7 @@ Ext.application({
 		function forSync() {
 			if(++count === 3) {
 				Ext.Viewport.removeAll(true, true);
-				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {}));
+				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {})).show();
 			}
 		}
 
