@@ -13,7 +13,7 @@ Ext.define("PMStouch.view.Setting", {
         items: [
         {
             xtype: 'formpanel',
-            title: '기본정보',
+            title: '기본설정',
             items: [{
 				xtype: 'fieldset',
 				items: [
