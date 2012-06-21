@@ -5,6 +5,12 @@ Ext.define('PMStouch.view.ProjectCodeList', {
 	    itemTpl: '<span>{key1}</span>{data2}',
 		cls : 'projectCode',
 		title : '프로젝트 코드 선택',
-	    store : 'BasViewDataListOut'
+	    store : 'FilteredBasViewDataListOut',
+	
+		items: [{
+			xtype: 'searchfield',
+			itemId: 'search',
+			docked: 'top'
+		}]
 	}
 });

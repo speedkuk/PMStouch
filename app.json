@@ -56,7 +56,14 @@
          * List of items in the CACHE MANIFEST section
          */
         "cache": [
-			"app.js"
+			"app.js",
+			"resources/image/bgBtnBar.png",
+			"resources/image/bgEventButton.png",
+			"resources/image/bgEventButtonOn.png",
+			"resources/image/bgGradient.png",
+			"resources/image/btnSearch.png",
+			"resources/image/btnSearchOff.png",
+			"resources/image/iconCheck.png"
         ],
         /**
          * List of items in the NETWORK section

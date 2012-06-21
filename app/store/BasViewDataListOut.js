@@ -20,6 +20,13 @@ Ext.define('PMStouch.store.BasViewDataListOut', {
 				procstep : '1',
 				tableName : '_PROJECT'
 			}
+		},
+
+		listeners : {
+			load : function(store, data, success) {
+				if(success)
+					Ext.getStore('FilteredBasViewDataListOut').setData(data);
+			}
 		}
 	}
 });

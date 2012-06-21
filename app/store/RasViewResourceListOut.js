@@ -20,6 +20,14 @@ Ext.define('PMStouch.store.RasViewResourceListOut', {
             extraParams: {
                 procstep: '1'
             }
-        }
+        },
+
+		listeners : {
+			load : function(store, data, success) {
+				if(success)
+					Ext.getStore('FilteredRasViewResourceListOut').setData(data);
+			}
+		}
     }
+
 });

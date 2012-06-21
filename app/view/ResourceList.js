@@ -4,6 +4,12 @@ Ext.define('PMStouch.view.ResourceList', {
 	config : {
 	    itemTpl: '{resId} - {resDesc}',
 		title : '직원 아이디 선택',
-	    store : 'RasViewResourceListOut'
+	    store : 'FilteredRasViewResourceListOut',
+	
+		items: [{
+			xtype: 'searchfield',
+			itemId: 'search',
+			docked: 'top'
+		}]
 	}
 });

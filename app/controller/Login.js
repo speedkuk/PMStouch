@@ -90,11 +90,14 @@ Ext.define('PMStouch.controller.Login', {
     },
 
 	gotoMain: function() {
+		var self = this;
+		
 		var count = 0;
 
 		function forSync() {
 			if(++count === 3) {
-				Ext.Viewport.removeAll(true, true);
+				// Ext.Viewport.removeAll(true, true); /* Ext.Msg 까지 사라지므로, 버그를 유발한다. */
+				self.getLogin().destroy();
 				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {})).show();
 			}
 		}

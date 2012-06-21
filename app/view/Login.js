@@ -12,6 +12,11 @@ Ext.define('PMStouch.view.Login', {
 			value: 'MIRACOM',
             name: 'j_factory'
         },
+		{
+			xtype: 'hiddenfield',
+			name: 'j_language',
+			value: 'ko'
+		},
         {
             xtype: 'textfield',
             label: '로그인',

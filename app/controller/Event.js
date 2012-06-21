@@ -62,41 +62,60 @@ Ext.define('PMStouch.controller.Event', {
 			this.getEvent().activate();
 	},
 
+	refresh: function() {
+		if(!this.getUserHiddenField().getValue()) {
+	        var defaultuser = PMStouch.setting.get('DefaultUser');
+	        var username, usernameDisp;
+
+	        if (defaultuser) {
+	            username = defaultuser;
+				usernameDisp = PMStouch.setting.get('DefaultUserDisp');
+	        } else {
+	            var lastuser = PMStouch.setting.get('LastUser');
+	            if (lastuser) {
+	                username = lastuser.resId;
+					usernameDisp = lastuser.resDesc;
+	            }
+	        }
+
+	        if (username) {
+	            this.getUserField().setValue(usernameDisp);
+				this.getUserHiddenField().setValue(username);
+	        }
+
+		} else {
+			this.refreshLastInfo();
+		}
+		
+		if(!this.getProjectHiddenField().getValue()) {
+	        var defaultproj = PMStouch.setting.get('DefaultProject');
+	        if (defaultproj) {
+	            this.getProjectField().setValue(PMStouch.setting.get('DefaultProjectDisp'));
+				this.getProjectHiddenField().setValue(defaultproj);
+	        } else {
+	            var lastproject = PMStouch.setting.get('LastProject');
+	            if (lastproject) {
+		            this.getProjectField().setValue(PMStouch.setting.get('LastProjectDisp'));
+					this.getProjectHiddenField().setValue(lastproject);
+				}
+	        }
+		}
+	},
+
     onInit: function() {
 	    this.getUserField().isField = true;
         this.getProjectField().isField = true;
     
         var self = this;
-        var defaultuser = PMStouch.setting.get('DefaultUser');
-        var username, usernameDisp;
 
-        if (defaultuser) {
-            username = defaultuser;
-			usernameDisp = PMStouch.setting.get('DefaultUserDisp');
-        } else {
-            var lastuser = PMStouch.setting.get('LastUser');
-            if (lastuser) {
-                username = lastuser.resId;
-				usernameDisp = lastuser.resDesc;
-            }
-        }
+		this.refresh();
 
-        if (username) {
-            this.getUserField().setValue(usernameDisp);
-			this.getUserHiddenField().setValue(username);
-        }
-
-        var defaultproj = PMStouch.setting.get('DefaultProject');
-        if (defaultproj) {
-            this.getProjectField().setValue(PMStouch.setting.get('DefaultProjectDisp'));
-			this.getProjectHiddenField().setValue(defaultproj);
-        } else {
-            var lastproject = PMStouch.setting.get('LastProject');
-            if (lastproject) {
-	            this.getProjectField().setValue(PMStouch.setting.get('LastProjectDisp'));
-				this.getProjectHiddenField().setValue(lastproject);
-			}
-        }
+		this.getEvent().on('painted', function() {
+			self.refresh();
+		});
+		this.getEvent().on('pop', function() {
+			self.refresh();
+		});
     },
 
     onUserSelected: function(field) {
@@ -128,6 +147,26 @@ Ext.define('PMStouch.controller.Event', {
         });
     },
 
+	refreshLastInfo: function() {
+        var self = this;
+        var store = Ext.getStore('RasViewResourceOut');
+        store.load({
+            params: {
+                procstep: '1',
+                resId: this.getUserHiddenField().getValue()
+            },
+            callback: function(records) {
+                var rc = records[0].data;
+
+                PMStouch.setting.set('LastUser', rc);
+
+               	self.getLastTime().setValue(rc.lastEventTime);
+               	self.getLastEvent().setValue(self.getEventName(rc.lastEventId) || rc.lastEventId);
+               	self.getLastProjectCode().setValue(self.getProjectName(rc.resSts1) || rc.resSts1);
+            }
+        });
+	},
+
     onProjectSelected: function(field) {
         this.getEvent().push({
             xtype: 'projectcode',
@@ -156,7 +195,8 @@ Ext.define('PMStouch.controller.Event', {
     },
 
     onButtonStart: function(field) {
-
+		var self = this;
+		
         this.getEventField().setValue('WRK_START');
         this.getBillingField().setValue(PMStouch.setting.get('DefaultBilling') || 'Y');
 
@@ -164,7 +204,8 @@ Ext.define('PMStouch.controller.Event', {
             url: 'service/rasResourceEvent.json',
             method: 'POST',
             success: function() {
-                Ext.Msg.alert('출근', '요청하신 내용이 잘 처리되었습니다.');
+                Ext.Msg.alert('출근', '즐거운 하루 되세요.');
+				self.refreshLastInfo();
             },
             failure: function() {
                 Ext.Msg.alert('출근', '요청하신 내용이 실패하였습니다.');
@@ -175,7 +216,8 @@ Ext.define('PMStouch.controller.Event', {
     },
 
     onButtonEnd: function(field) {
-
+		var self = this;
+		
         this.getEventField().setValue('WRK_END');
         this.getBillingField().setValue(PMStouch.setting.get('DefaultBilling') || 'Y');
 
@@ -183,7 +225,8 @@ Ext.define('PMStouch.controller.Event', {
             url: 'service/rasResourceEvent.json',
             method: 'POST',
             success: function() {
-                Ext.Msg.alert('퇴근', '요청하신 내용이 잘 처리되었습니다.');
+                Ext.Msg.alert('퇴근', '오늘 하루 수고하셨습니다.');
+				self.refreshLastInfo();
             },
             failure: function() {
                 Ext.Msg.alert('퇴근', '요청하신 내용이 실패하였습니다.');
