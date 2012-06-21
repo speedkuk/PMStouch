@@ -38,7 +38,7 @@ Ext.define('PMStouch.controller.ResourceHistory', {
 		var now = new Date();
 		var to = Ext.Date.format(now, 'YmdHis');
 
-		now.setMonth(now.getMonth() - 1);
+		now.setYear(now.getYear() - 1);
 		var from = Ext.Date.format(now, 'YmdHis');
 
 		store.load({
@@ -56,12 +56,16 @@ Ext.define('PMStouch.controller.ResourceHistory', {
 					return;
 				}
 				
-				Ext.Array.each(records, function(record) {
-					var proj = record.get('newSts1');
-					var event = record.get('eventId');
-					record.set('newSts1', self.getProjectName(proj) || proj);
-					record.set('eventId', self.getEventName(event) || event);
-				});
+				if(records.length == 0) {
+					Ext.Msg.alert('이력정보', '최근 이력이 없습니다.');
+				} else {
+					Ext.Array.each(records, function(record) {
+						var proj = record.get('newSts1');
+						var event = record.get('eventId');
+						record.set('newSts1', self.getProjectName(proj) || proj);
+						record.set('eventId', self.getEventName(event) || event);
+					});
+				}
 			}
 		});
 	},
