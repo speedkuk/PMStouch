@@ -134,7 +134,7 @@ Ext.define("PMStouch.view.Event", {
                 {
                     xtype: 'button',
                     itemId: 'more',
-                    text: '변경',
+                    text: '기타',
                     cls: 'eventMore',
                     flex: 1
                 }
