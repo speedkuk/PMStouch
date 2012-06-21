@@ -100,8 +100,11 @@ Ext.define('PMStouch.controller.EventMore', {
             success: function() {
                 Ext.Msg.alert(self.getEventField().getRecord().get('eventDesc'), '요청하신 내용이 잘 처리되었습니다.');
             },
-            failure: function() {
-                Ext.Msg.alert(self.getEventField().getRecord().get('eventDesc'), '요청하신 내용이 실패하였습니다.');
+            failure: function(form, response) {
+				if(response && response.msg)
+		            Ext.Msg.alert('오류(' + self.getEventField().getRecord().get('eventDesc') + ')', response.msg);
+				else
+                	Ext.Msg.alert('오류', self.getEventField().getRecord().get('eventDesc') + ' 요청처리에 실패하였습니다.');
             }
         });
     },

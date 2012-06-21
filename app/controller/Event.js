@@ -207,8 +207,11 @@ Ext.define('PMStouch.controller.Event', {
                 Ext.Msg.alert('출근', '즐거운 하루 되세요.');
 				self.refreshLastInfo();
             },
-            failure: function() {
-                Ext.Msg.alert('출근', '요청하신 내용이 실패하였습니다.');
+            failure: function(form, response) {
+				if(response && response.msg)
+		            Ext.Msg.alert('오류(출근)', response.msg);
+				else
+	                Ext.Msg.alert('오류', '출근 요청처리를 실패하였습니다.');
             }
         });
 
@@ -228,8 +231,11 @@ Ext.define('PMStouch.controller.Event', {
                 Ext.Msg.alert('퇴근', '오늘 하루 수고하셨습니다.');
 				self.refreshLastInfo();
             },
-            failure: function() {
-                Ext.Msg.alert('퇴근', '요청하신 내용이 실패하였습니다.');
+            failure: function(form, response) {
+				if(response && response.msg)
+		            Ext.Msg.alert('오류(퇴근)', response.msg);
+				else
+	                Ext.Msg.alert('오류', '퇴근 요청 처리를 실패하였습니다.');
             }
         });
 

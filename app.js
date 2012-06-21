@@ -45,6 +45,9 @@ Ext.application({
 		Ext.Date.defaultFormat = 'Y-m-d H:i:s';
 
 		this.autoLogin();
+		
+        // Destroy the #appLoadingIndicator element
+        Ext.fly('appLoadingIndicator').destroy();
     },
 
     onUpdated: function() {
@@ -100,13 +103,9 @@ Ext.application({
 			},
 			success: function() {
 				self.gotoMain();
-		        // Destroy the #appLoadingIndicator element
-		        Ext.fly('appLoadingIndicator').destroy();
 			},
 			failure: function() {
 				self.gotoLogin();
-		        // Destroy the #appLoadingIndicator element
-		        Ext.fly('appLoadingIndicator').destroy();
 			}
 		})
 	}
