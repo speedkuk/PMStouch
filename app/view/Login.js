@@ -6,7 +6,7 @@ Ext.define('PMStouch.view.Login', {
     config: {
 
         url: '../j_spring_security_check',
-
+		cls :'login',
         items: [{
             xtype: 'hiddenfield',
 			value: 'MIRACOM',
@@ -17,15 +17,16 @@ Ext.define('PMStouch.view.Login', {
 			name: 'j_language',
 			value: 'ko'
 		},
+		{
+			html:'<div class="productName">PMStouch<span>product management mobile system</span></div>'
+		},
         {
             xtype: 'textfield',
-            label: '로그인',
-			placeHolder: '로그인 아이디 입력',
+			placeHolder: ' 아이디 입력',
             name: 'j_username'
         },
         {
             xtype: 'passwordfield',
-            label: '패스워드',
 			placeHolder: '패스워드 입력',
             name: 'j_password'
         },
@@ -43,6 +44,7 @@ Ext.define('PMStouch.view.Login', {
                 xtype: 'button',
                 itemId: 'resetButton',
                 flex: 1,
+				cls : 'marginR5 btnReset',
                 text: 'Reset'
             },
             {
@@ -50,7 +52,7 @@ Ext.define('PMStouch.view.Login', {
                 itemId: 'loginButton',
                 flex: 1,
                 text: 'Login',
-                ui: 'confirm'
+                cls : 'btnLogin'
             }]
         }]
     }

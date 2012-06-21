@@ -81,6 +81,28 @@ body.x-desktop{font-size:100%;}
 	box-shadow:1px 1px 1px #23344c;color:#efefef;font-size:19px;
 }
 
+// login style
+.login{background:url('../image/bgLogin.png') repeat-x #192b46 !important}
+.login .x-scroll-view{min-width:250px;max-width:650px;margin:auto;}
+.login.x-form .x-scroll-container{background:url('../image/loginTop.png') 50% 0 no-repeat;}
+.productName{padding:184px 0 20px 0;text-align:center;font-size:36px;color:#fff;font-weight:bold;}
+.productName span{display:block;font-size:10px;color:#849dc1;text-transform:uppercase;}
+.login .x-field{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;margin-bottom:5px;padding-left:15px;}
+.login .x-docked-bottom{padding:7px;background:rgba(0, 0, 0, .3);}
+.login .x-button{min-height:3em;}
+.login .x-toggle,.x-thumb::before{border:1px solid #585858;}
+.login .x-toggle-on{
+	background-color:#4ec9eb;
+	background-image:-webkit-linear-gradient(top, #658fca,#527ebb 30%,#476fa7 65%,#476fa7);
+	background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #658fca), color-stop(10%, #527ebb), color-stop(65%, #476fa7), color-stop(100%, #476fa7));
+	background-image:linear-gradient(top, #658fca,#527ebb 30%,#476fa7 65%,#476fa7)
+}
+.login .x-form-label{background-color:transparent;color:#666;}
+.login .x-button.btnReset{background:url('../image/bgEventButton.png') 100% 0 no-repeat #2c353c !important;border:1px solid #000;color:#cfcfcf;}
+.login .x-button.btnReset.x-button-pressing{background:none #111;color:#fff;}
+.login .x-button.btnLogin{background:url('../image/bgEventButtonOn.png') 100% 0 no-repeat #1c5d76 !important;border:1px solid #000;color:#fff;}
+.login .x-button.btnLogin.x-button-pressing{background:url('../image/bgLoginButtonOn.png') 0 0 repeat-x #62a2ba !important;border:1px solid #000;color:#fff;}
+
 // toggle style
 .x-slider,.x-toggle{height:1.5em;width:5em;}
 
@@ -95,3 +117,4 @@ body.x-desktop{font-size:100%;}
     &:before{left:- 0;}
     &:after {left:- 0;}
   }
+
