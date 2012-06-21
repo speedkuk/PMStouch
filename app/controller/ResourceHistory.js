@@ -38,8 +38,10 @@ Ext.define('PMStouch.controller.ResourceHistory', {
 		var now = new Date();
 		var to = Ext.Date.format(now, 'YmdHis');
 
-		now.setYear(now.getYear() - 1);
+		now.setFullYear(now.getFullYear() - 1);
 		var from = Ext.Date.format(now, 'YmdHis');
+		
+		console.log(from);
 
 		store.load({
 			params : {
