@@ -24,6 +24,7 @@ Ext.define('PMStouch.controller.ProjectCodeList', {
 		},
 	
 		onSearch: function(field, value) {
+			this.getProjectcode().getStore().clearFilter(true);
 			this.getProjectcode().getStore().filter('data2', value);
 			PMStouch.setting.set('ProjectFilter', value);
 		},

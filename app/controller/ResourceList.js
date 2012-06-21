@@ -24,6 +24,7 @@ Ext.define('PMStouch.controller.ResourceList', {
 		},
 		
 		onSearch: function(field, value) {
+			this.getReslist().getStore().clearFilter(true);
 			this.getReslist().getStore().filter('resDesc', value);
 			PMStouch.setting.set('ResourceFilter', value);
 		},
