@@ -18,7 +18,7 @@ Ext.define('PMStouch.view.Login', {
 			value: 'ko'
 		},
 		{
-			html:'<div class="productName">PMStouch<span>product management mobile system</span></div>'
+			html:'<div class="productName">PMStouch<span>project management mobile system</span></div>'
 		},
         {
             xtype: 'textfield',
