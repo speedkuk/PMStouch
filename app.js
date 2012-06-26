@@ -68,7 +68,16 @@ Ext.application({
 	gotoMain: function() {
 		var count = 0;
 
-		function forSync() {
+		function forSync(records, operation, success) {
+			if(!success) {
+				Ext.Msg.confirm(
+		            "서비스 오류",
+		            "서비스가 원할하지 않습니다. 페이지를 새로 여십시오.",
+		            function() {
+		                window.location.reload();
+		            }
+		        );
+			}
 			if(++count === 3) {
 				Ext.Viewport.removeAll(true, true);
 				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {})).show();
@@ -99,7 +108,8 @@ Ext.application({
 			params: {
 				j_username : login,
 				j_password : pwd,
-				j_factory : company
+				j_factory : company,
+				j_language : 'ko'
 			},
 			success: function() {
 				self.gotoMain();
