@@ -98,14 +98,14 @@ Ext.define("PMStouch.view.EventMore", {
             {
                 xtype: 'datepickerfield',
                 itemId: 'date',
-                placeHolder: '(기본)오늘 일자',
+                placeHolder: '(기본) 오늘 일자',
                 label: '발생 일자',
                 disabled: true
             },
             {
                 xtype: 'timepickerfield',
                 itemId: 'time',
-                placeHolder: '(기본)현재 시간',
+                placeHolder: '(기본) 현재 시간',
                 label: '발생 시간',
                 disabled: true
             },

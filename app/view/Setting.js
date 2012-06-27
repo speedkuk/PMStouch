@@ -58,7 +58,7 @@ Ext.define("PMStouch.view.Setting", {
                     xtype: 'textfield',
                     itemId: 'project',
                     label: '프로젝트',
-                    placeHolder: '기본사용 프로텍트를 선택하세요',
+                    placeHolder: '기본사용 프로젝트를 선택하세요',
 					disabled: true,
                     flex: 1
                 },

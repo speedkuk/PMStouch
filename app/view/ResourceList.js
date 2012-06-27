@@ -3,7 +3,7 @@ Ext.define('PMStouch.view.ResourceList', {
 	xtype : 'reslist',
 	config : {
 	    itemTpl: '{resId} - {resDesc}',
-		title : '직원 아이디 선택',
+		title : '직원이름 선택',
 	    store : 'FilteredRasViewResourceListOut',
 	
 		items: [{
