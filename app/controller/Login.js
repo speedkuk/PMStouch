@@ -2,10 +2,6 @@ Ext.define('PMStouch.controller.Login', {
     extend: 'Ext.app.Controller',
 
     config: {
-        routes: {
-            login: 'onLogin'
-        },
-
         refs: {
             login: 'login',
 			company: 'login [name=j_factory]',
@@ -33,11 +29,6 @@ Ext.define('PMStouch.controller.Login', {
                 tap: 'onButtonLogin'
             }
         }
-    },
-
-    onLogin: function() {
-        Ext.Viewport.removeAll(true, true);
-        Ext.Viewport.add(Ext.create('PMStouch.view.Login', {}));
     },
 
     onLoginNameChanged: function(f, value) {
@@ -96,8 +87,18 @@ Ext.define('PMStouch.controller.Login', {
 
 		function forSync() {
 			if(++count === 3) {
-				// Ext.Viewport.removeAll(true, true); /* Ext.Msg 까지 사라지므로, 버그를 유발한다. */
-				self.getLogin().destroy();
+				if(!PMStouch.setting.get('DefaultUser')) {
+					// 등록된 리소스라면, 디폴트 직원으로 설정.
+					var record = Ext.getStore('RasViewResourceListOut').findRecord('resId', PMStouch.setting.get('DefaultLogin'));
+					if(record) {
+						PMStouch.setting.set('DefaultUser', record.get('resId'));
+						PMStouch.setting.set('DefaultUserDisp', record.get('resDesc'));
+					}
+				}
+				
+				// TODO Confirm
+				Ext.Viewport.removeAll(true, false); /* Ext.Msg 까지 사라지므로, 버그를 유발한다. */
+				// self.getLogin().destroy();
 				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {})).show();
 			}
 		}

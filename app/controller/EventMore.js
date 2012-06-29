@@ -77,7 +77,9 @@ Ext.define('PMStouch.controller.EventMore', {
 
         if(!this.getEventField().getValue()) {
 			Ext.Msg.alert('필수항목', '이벤트를 선택해야 합니다');
+			return;
 		}
+		
         this.getProjectField().setValue(this.getParentProjectField().getValue());
         this.getUserField().setValue(this.getParentUserField().getValue());
 		this.getBillingHiddenField().setValue(this.getBillingField().getValue() ? 'Y' : 'N');

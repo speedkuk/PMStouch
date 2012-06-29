@@ -19,6 +19,14 @@ Ext.define('PMStouch.store.RasViewEventListOut', {
 			extraParams : {
 				procstep : '1'
 			}
+		},
+		listeners : {
+			load : function(store) {
+				store.insert(0, {
+					eventId : '',
+					eventDesc : ''
+				});
+			}
 		}
 	}
 });

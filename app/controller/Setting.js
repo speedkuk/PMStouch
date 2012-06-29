@@ -5,10 +5,6 @@ Ext.define('PMStouch.controller.Setting', {
     ],
 
     config: {
-		routes: {
-			setting: 'onSetting'
-		},
-
         refs: {
             setting: 'setting',
 			companyField: 'setting [itemId=company]',
@@ -50,11 +46,6 @@ Ext.define('PMStouch.controller.Setting', {
         }
     },
 	
-	onSetting: function() {
-		if(this.getSetting())
-			this.getSetting().show();
-	},
-
     onInit: function() {
 	    this.getUserField().isField = true;
         this.getProjectField().isField = true;

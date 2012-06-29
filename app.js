@@ -61,7 +61,8 @@ Ext.application({
     },
 
 	gotoLogin: function() {
-		Ext.Viewport.removeAll(true, true);
+		// TODO Confirm.
+		Ext.Viewport.removeAll(true, false);
 		Ext.Viewport.add(Ext.create('PMStouch.view.Login', {})).show();
 	},
 	
@@ -79,7 +80,16 @@ Ext.application({
 		        );
 			}
 			if(++count === 3) {
-				Ext.Viewport.removeAll(true, true);
+				if(!PMStouch.setting.get('DefaultUser')) {
+					// 등록된 리소스라면, 디폴트 직원으로 설정.
+					var record = Ext.getStore('RasViewResourceListOut').findRecord('resId', PMStouch.setting.get('DefaultLogin'));
+					if(record) {
+						PMStouch.setting.set('DefaultUser', record.get('resId'));
+						PMStouch.setting.set('DefaultUserDisp', record.get('resDesc'));
+					}
+				}
+				// TODO confirm
+				Ext.Viewport.removeAll(true, false);
 				Ext.Viewport.add(Ext.create('PMStouch.view.Main', {})).show();
 			}
 		}
@@ -96,8 +106,9 @@ Ext.application({
 		var company = PMStouch.setting.get('DefaultCompany') || 'MIRACOM';
 
 		if(!login) {
-			Ext.Viewport.removeAll(true, true);
-			Ext.Viewport.add(Ext.create('PMStouch.view.Login', {}));
+			// Ext.Viewport.removeAll(true, false);
+			// Ext.Viewport.add(Ext.create('PMStouch.view.Login', {}));
+			self.gotoLogin();
 			
 			return;
 		}

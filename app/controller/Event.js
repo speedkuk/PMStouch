@@ -5,10 +5,6 @@ Ext.define('PMStouch.controller.Event', {
     ],
 
     config: {
-		routes: {
-			event: 'onEvent'
-		},
-
         refs: {
             event: 'event',
             form: 'event > #eventForm',
@@ -56,11 +52,6 @@ Ext.define('PMStouch.controller.Event', {
             }
         }
     },
-
-	onEvent: function() {
-		if(this.getEvent())
-			this.getEvent().activate();
-	},
 
 	refresh: function() {
 		if(!this.getUserHiddenField().getValue()) {
